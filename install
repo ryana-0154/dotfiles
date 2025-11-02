@@ -2,6 +2,12 @@
 #
 # Symlinks all the files, so you can git pull this repo and it updates
 
+# Author: Ryan A
+# Date: November 02, 2025
+# License: MIT
+
+set -euo pipefail
+
 defaults() {
 	echo defaults "$@"
 	command defaults "$@"
@@ -53,7 +59,9 @@ for folder in "${dotfile_folders[@]}"; do
 			symlink_folder "$PWD/$folder" ~/"$folder"
 			;;
 		vim)
-			echo "vim"
+			[[ -d ~/.vim && ! -L ~/.vim ]] && rm -r ~/.vim
+
+			symlink "$PWD/vim/vim_folder" ~/.vim
 			handle_folder "vim"
 			;;
 		*)
@@ -61,6 +69,12 @@ for folder in "${dotfile_folders[@]}"; do
 			;;
 	esac
 done
+
+if [[ -t 1 ]]; then
+	vim '+PlugInstall --sync' +qa
+else
+	printf "may need to run:\n\tvim +'PlugInstall --sync' +qa\n"
+fi
 
 echo
 echo "$(echo $LESS_TERMCAP_us)DOTFILES INSTALLED SUCCESSFULLY. CAN TEST EXTRA BINS WITH 'ryan_test'"
