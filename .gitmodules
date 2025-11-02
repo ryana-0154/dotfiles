@@ -1,0 +1,21 @@
+[submodule "vim/bundle/vim-pathogen"]
+	path = vim/submodules/vim-pathogen
+	url = git@github.com:tpope/vim-pathogen
+[submodule "vim/bundle/syntastic"]
+	path = vim/submodules/syntastic
+	url = git@github.com:scrooloose/syntastic.git
+[submodule "vim/bundle/vim-asm_ca65"]
+	path = vim/submodules/vim-asm_ca65
+	url = git@github.com:maxbane/vim-asm_ca65
+[submodule "vim/bundle/vim-flavored-markdown"]
+	path = vim/submodules/vim-flavored-markdown
+	url = git@github.com:jtratner/vim-flavored-markdown.git
+[submodule "vim/bundle/rust.vim"]
+	path = vim/submodules/rust.vim
+	url = git@github.com:rust-lang/rust.vim.git
+[submodule "vim/bundle/vim-airline"]
+	path = vim/submodules/vim-airline
+	url = git@github.com:vim-airline/vim-airline.git
+[submodule "vim/bundle/vim-airline-themes"]
+	path = vim/submodules/vim-airline-themes
+	url = git@github.com:vim-airline/vim-airline-themes.git

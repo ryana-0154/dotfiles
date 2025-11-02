@@ -1,0 +1,56 @@
+" VIMRC
+
+set nocompatible
+set autoindent
+set backspace=indent,eol,start
+set formatoptions-=t
+set hlsearch
+set number
+set nostartofline
+set ruler
+set showmatch
+set showmode
+set showcmd
+set tabstop=8
+set textwidth=80
+set title
+
+" ---------------------------------------------
+" Abbreviations
+" ---------------------------------------------
+iab <expr> me:: strftime("Author: Dave Eddy <dave@daveeddy.com><cr>Date: %B %d, %Y<cr>License: MIT")
+
+" ---------------------------------------------
+" Theme / Color Scheme
+" ---------------------------------------------
+set background=light
+hi Comment ctermfg=64
+
+" ---------------------------------------------
+" Spell Check Settings
+" ---------------------------------------------
+set spelllang=en
+highlight clear SpellBad
+highlight SpellBad term=standout cterm=underline ctermfg=red
+highlight clear SpellCap
+highlight SpellCap term=underline cterm=underline
+highlight clear SpellRare
+highlight SpellRare term=underline cterm=underline
+highlight clear SpellLocal
+highlight SpellLocal term=underline cterm=underline
+
+" ---------------------------------------------
+" Highlight Unwanted Whitespace
+" ---------------------------------------------
+highlight RedundantWhitespace ctermbg=green guibg=green
+match RedundantWhitespace /\s\+$\| \+\ze\t/
+
+" ---------------------------------------------
+" Source local config
+" ---------------------------------------------
+if filereadable(expand("~/.vimrc.local"))
+	source ~/.vimrc.local
+endif
+if filereadable(expand("~/.vimrc.indent"))
+	source ~/.vimrc.indent
+endif

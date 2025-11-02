@@ -18,6 +18,22 @@ symlink_folder() {
 	ln -sf "$@"
 }
 
+handle_folder() {
+	folder="$1"
+	for file in $folder/*; do
+		[ -f "$file" ] || continue  # skip if not a regular file
+
+		filename=$(basename $file)
+		# Check if file exists and is not a symlink. If it is, delete it
+		[[ -d ~/.$filename && ! -L ~/.$filename ]] && rm -r ~/."$filename"
+
+		symlink "$PWD/$folder/$filename" ~/."$filename"
+	done
+}
+
+git submodule init
+git submodule update
+
 dotfile_folders=(
 	bash
 	git
@@ -31,22 +47,19 @@ dotfile_folders=(
 )
 
 for folder in "${dotfile_folders[@]}"; do
-	if [[ "$folder" == "extra_bins" ]]; then
-		[[ -d ~/$folder ]] && rm -rf ~/"$folder"
-		symlink_folder "$PWD/$folder" ~/"$folder"
-		continue
-	fi
-	for file in $folder/*; do
-		[ -f "$file" ] || continue  # skip if not a regular file
-
-
-		filename=$(basename $file)
-		# Check if file exists and is not a symlink. If it is, delete it
-		[[ -d ~/.$filename && ! -L ~/.$filename ]] && rm -r ~/."$filename"
-
-		# echo "Symlinking $folder/$filename to ~/.$filename"
-		symlink "$PWD/$folder/$filename" ~/."$filename"
-	done
+	case "$folder" in
+		extra_bins)
+			[[ -d ~/$folder ]] && rm -rf ~/"$folder"
+			symlink_folder "$PWD/$folder" ~/"$folder"
+			;;
+		vim)
+			echo "vim"
+			handle_folder "vim"
+			;;
+		*)
+			handle_folder "$folder"
+			;;
+	esac
 done
 
 echo
