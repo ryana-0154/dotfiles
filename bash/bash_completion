@@ -13,3 +13,22 @@ complete -d cd pushd rmdir
 
 # NVM completion
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
+
+_repo_complete() {
+  local base=~/repos
+  COMPREPLY=($(compgen -W "$(ls -1 "$base")" -- "${COMP_WORDS[1]}"))
+}
+
+_repo_fzf_complete() {
+  local base=~/repos cur="${COMP_WORDS[COMP_CWORD]}"
+  if command -v fzf >/dev/null 2>&1; then
+    local sel
+    sel=$(command ls -1d "$base"/*/ 2>/dev/null | xargs -n1 basename \
+          | fzf --query="$cur" --select-1 --exit-0) || return
+    COMPREPLY=("$sel")
+  else
+    COMPREPLY=($(compgen -W "$(command ls -1 "$base")" -- "$cur"))
+  fi
+}
+
+complete -F _repo_fzf_complete repo

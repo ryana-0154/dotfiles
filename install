@@ -179,6 +179,7 @@ handle_pkg_install() {
 			tree
 			yq
 			python3-pip
+			fzf
 		)
 		for apt_pkg in "${apt_pkgs[@]}"; do
 			install_pkg "$apt_pkg" || true
