@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+echo "Extra bins is working!"

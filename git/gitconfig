@@ -1,0 +1,8 @@
+[user]
+	name = Ryan A
+[color]
+	ui = auto
+[push]
+	default = matching
+[pull]
+	rebase = false

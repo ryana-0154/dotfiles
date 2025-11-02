@@ -1,0 +1,44 @@
+#!/usr/bin/env bash
+
+# use vardump instead of parr
+alias parr='vardump'
+
+# GENERIC
+alias ..='echo "cd .."; cd ..'
+alias ag='rg' # sorry silver searcher
+alias chomd='chmod'
+alias externalip='curl -sS https://www.daveeddy.com/ip'
+alias gerp='grep'
+alias hl='rg --passthru'
+alias l='ls'
+alias ll='ls -lha'
+alias suod='sudo'
+grep --color=auto </dev/null &>/dev/null && alias grep='grep --color=auto'
+xdg-open --version &>/dev/null && alias open='xdg-open'
+# Enable color support of ls
+if ls --color=auto &>/dev/null; then
+	alias ls='ls -p --color=auto'
+else
+	alias ls='ls -p -G'
+fi
+
+# GIT ALIASES
+alias nb='git checkout -b "$USER-$(date +%s)"' # new branch
+alias ga='git add . --all'
+alias gb='git branch'
+alias gc='git clone'
+alias gci='git commit -a'
+alias gco='git checkout'
+alias gd="git diff ':!*lock'"
+alias gdf='git diff' # git diff (full)
+alias gi='git init'
+alias gl='git log'
+alias gp='git push origin HEAD'
+alias gr='git rev-parse --show-toplevel' # git root
+alias gs='git status'
+alias gt='git tag'
+alias gu='git pull' # gu = git update
+
+# Python
+alias mkenv='python3 -m venv .venv'
+alias pyact='. .venv/bin/activate'
