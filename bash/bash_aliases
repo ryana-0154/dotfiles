@@ -3,18 +3,10 @@
 # use vardump instead of parr
 alias parr='vardump'
 
-# GENERIC
-alias ..='echo "cd .."; cd ..'
-alias ag='rg' # sorry silver searcher
-alias chomd='chmod'
-alias externalip='curl -sS https://www.daveeddy.com/ip'
-alias gerp='grep'
-alias hl='rg --passthru'
-alias l='ls'
+# ls
+alias l='ls -CF'
+alias la='ls -A'
 alias ll='ls -lha'
-alias suod='sudo'
-grep --color=auto </dev/null &>/dev/null && alias grep='grep --color=auto'
-xdg-open --version &>/dev/null && alias open='xdg-open'
 # Enable color support of ls
 if ls --color=auto &>/dev/null; then
 	alias ls='ls -p --color=auto'
@@ -22,8 +14,19 @@ else
 	alias ls='ls -p -G'
 fi
 
+# Typos
+alias chomd='chmod'
+alias gerp='grep'
+alias suod='sudo'
+
+# GENERIC
+alias ..='echo "cd .."; cd ..'
+grep --color=auto </dev/null &>/dev/null && alias grep='grep --color=auto'
+alias hl='rg --passthru'
+alias c='clear'
+alias h='history | tail -20'
+
 # GIT ALIASES
-alias nb='git checkout -b "$USER-$(date +%s)"' # new branch
 alias ga='git add . --all'
 alias gb='git branch'
 alias gc='git clone'
@@ -38,6 +41,52 @@ alias gr='git rev-parse --show-toplevel' # git root
 alias gs='git status'
 alias gt='git tag'
 alias gu='git pull' # gu = git update
+alias nb='git checkout -b "$USER-$(date +%s)"' # new branch
+
+# Utilities
+alias externalip='curl -sS https://www.daveeddy.com/ip'
+
+# System Monitoring
+alias top10='ps aux --sort=-%mem | head -n 11'
+alias psg='ps aux | grep -v grep | grep -i'
+alias meminfo='free -h'
+alias cpuinfo='lscpu'
+alias dfh='df -hT'
+alias duh='du -h --max-depth=1'
+alias ports='ss -tuln'
+
+# Networking
+alias pingg='ping -c 5 8.8.8.8'
+alias netstat='ss -tulpen'
+alias iptableslist='sudo iptables -L -v -n'
+alias flushdns='sudo systemd-resolve --flush-caches'
+
+# Package management
+alias update='sudo apt update && sudo apt upgrade -y'
+alias install='sudo apt install'
+alias remove='sudo apt remove'
+alias cleanup='sudo apt autoremove && sudo apt autoclean'
+
+# Safety
+alias rm='rm -i'
+alias cp='cp -i'
+alias mv='mv -i'
+alias chown='chown --preserve-root'
+alias chmod='chmod --preserve-root'
+alias reboot='sudo systemctl reboot'
+alias shutdown='sudo systemctl poweroff'
+
+# Misc
+alias journal='sudo journalctl -xe'
+alias services='systemctl list-units --type=service --state=running'
+alias editbash='nano ~/.bashrc && source ~/.bashrc'
+alias reload='source ~/.bashrc'
+alias s='sudo systemctl'
+alias d='sudo docker'
+alias k='kubectl'
+alias dps='docker ps --format "table {{.Names}}\t{{.Image}}\t{{.Status}}\t{{.Ports}}"'
+
+
 
 # Python
 alias mkenv='python3 -m venv .venv'

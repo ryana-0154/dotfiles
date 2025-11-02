@@ -8,3 +8,6 @@ complete -b builtin
 complete -c type which
 complete -cf man sudo
 complete -d cd pushd rmdir
+
+# NVM completion
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"

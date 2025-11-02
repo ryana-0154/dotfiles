@@ -8,6 +8,11 @@
 
 set -euo pipefail
 
+readonly GREEN='\033[0;32m'
+readonly RED='\033[0;31m'
+readonly NC='\033[0m'
+SUDO_REFRESHED=0
+
 defaults() {
 	echo defaults "$@"
 	command defaults "$@"
@@ -24,17 +29,99 @@ symlink_folder() {
 	ln -sf "$@"
 }
 
+spinner() {
+    local pid=$1
+    local msg=$2
+    local delay=0.1
+    local spin='|/-\'
+
+    # show spinner until pid exits
+    while kill -0 "$pid" 2>/dev/null; do
+        for ((i=0; i<${#spin}; i++)); do
+            # 55-char left pad, then msg + spinner glyph
+            printf '\r%55s %s' "$msg" "${spin:$i:1}"
+            sleep "$delay"
+        done
+    done
+}
+
+center_text() {
+	local text="$1"
+	local term_width=$(tput cols 2>/dev/null || echo 80)
+	local text_len=${#text}
+	local pad=$(( (term_width - text_len) / 2 ))
+	printf "%*s%s" "$pad" "" "$text"
+}
+
 handle_folder() {
-	folder="$1"
-	for file in $folder/*; do
+	local folder=$1
+	local file
+	for file in "$folder"/*; do
 		[ -f "$file" ] || continue  # skip if not a regular file
 
-		filename=$(basename $file)
+		local filename
+		filename=$(basename -- "$file")
 		# Check if file exists and is not a symlink. If it is, delete it
-		[[ -d ~/.$filename && ! -L ~/.$filename ]] && rm -r ~/."$filename"
+		if [[ -d "$HOME/.$filename" && ! -L "$HOME/.$filename" ]]; then
+			rm -rf -- "$HOME/.$filename"
+		fi
 
-		symlink "$PWD/$folder/$filename" ~/."$filename"
+		symlink "$PWD/$folder/$filename" "$HOME/.$filename"
 	done
+}
+
+install_pkg() {
+  local pkg=${1:?pkg arg required}       # <-- prevents unbound
+  local msg="Installing $pkg"
+
+  if [[ $SUDO_REFRESHED -eq 0 ]]; then
+    if ! sudo -n true 2>/dev/null; then
+      printf '\n%s\n' "sudo access required to install packages."
+      sudo -v
+    fi
+    SUDO_REFRESHED=1
+  fi
+
+  sudo apt-get install -qq -y "$pkg" >/dev/null 2>&1 &
+  local pid=$!
+
+  spinner "$pid" "$msg"
+
+  local status
+  if wait "$pid"; then status=0; else status=$?; fi  # <-- works with set -e
+
+  if [[ $status -eq 0 ]]; then
+    printf '\r%55s %bDONE%b' "$msg" "$GREEN" "$NC"
+  else
+    printf '\r%55s %bFAIL%b' "$msg" "$RED" "$NC"
+  fi
+  tput el 2>/dev/null || printf '      '
+  printf '\n'
+
+  return "$status"
+}
+
+handle_pkg_install() {
+	read -rp "Install useful packages? (y/n): " ans
+	if [[ "$ans" =~ ^[Yy]$ ]]; then
+		apt_pkgs=(
+			ripgrep
+			dnsutils
+			net-tools
+			tcpdump
+			rg
+			ncdu
+			jq
+			sysstat
+			nmap
+			tree
+			yq
+			python3-pip
+		)
+		for apt_pkg in "${apt_pkgs[@]}"; do
+			install_pkg "$apt_pkg" || true
+		done
+	fi
 }
 
 git submodule init
@@ -59,9 +146,9 @@ for folder in "${dotfile_folders[@]}"; do
 			symlink_folder "$PWD/$folder" ~/"$folder"
 			;;
 		vim)
-			[[ -d ~/.vim && ! -L ~/.vim ]] && rm -r ~/.vim
+			[[ -d ~/.vim && ! -L ~/.vim ]] && rm -rf -- "$HOME/.vim"
 
-			symlink "$PWD/vim/vim_folder" ~/.vim
+			symlink "$PWD/vim/vim_folder" "$HOME/.vim"
 			handle_folder "vim"
 			;;
 		*)
@@ -77,4 +164,9 @@ else
 fi
 
 echo
-echo "$(echo $LESS_TERMCAP_us)DOTFILES INSTALLED SUCCESSFULLY. CAN TEST EXTRA BINS WITH 'ryan_test'"
+handle_pkg_install
+echo
+
+echo
+echo -e "\033[0;32mDOTFILES INSTALLED SUCCESSFULLY. CAN TEST EXTRA BINS WITH 'ryan_test'\033[0m"
+echo -e "\t - Restart terminal or run 'source ~/.bashrc' to get changes\n"

@@ -13,6 +13,8 @@ export LSCOLORS='ExGxbEaECxxEhEhBaDaCaD'
 export PAGER='less'
 export TZ='Europe/London'
 export VISUAL='vim'
+export NVM_DIR="$HOME/.nvm"
+export PNPM_HOME="/home/ryan/.local/share/pnpm"
 
 # Support colors in less
 export LESS_TERMCAP_mb=$(
@@ -100,6 +102,7 @@ PS1+='\[${PROMPT_COLORS[0]}\]\$\[${COLOR256[256]}\] '
 # load completion
 . /etc/bash/bash_completion 2>/dev/null ||
 	. ~/.bash_completion 2>/dev/null
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 
 # set the theme
 set_prompt_colors 24
@@ -111,5 +114,7 @@ PROMPT_DIRTRIM=6
 
 path_add ~/extra_bins before
 path_add "/mnt/c/Users/User/AppData/Local/Programs/Microsoft VS Code/bin" before
+path_add "/home/ryan/.local/share/pnpm" before
+
 path_clean
 true
