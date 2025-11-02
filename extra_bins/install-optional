@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 ask_permission() {
-    local prompt="Install $1?"
+    local prompt="$1"
     local ans
 
     read -r -p "$prompt (Y/n) [default: Y]: " ans
@@ -11,4 +11,4 @@ ask_permission() {
 }
 
 # UV - Great in python
-ask_permission "uv" && curl -LsSf https://astral.sh/uv/install.sh | sh
+ask_permission "Install UV?" && curl -LsSf https://astral.sh/uv/install.sh | sh
