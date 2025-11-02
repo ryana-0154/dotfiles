@@ -172,7 +172,6 @@ handle_pkg_install() {
 			dnsutils
 			net-tools
 			tcpdump
-			rg
 			ncdu
 			jq
 			sysstat
