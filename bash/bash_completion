@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 # standard completions
 complete -A binding bind
 complete -A setopt set

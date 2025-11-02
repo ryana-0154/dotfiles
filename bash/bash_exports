@@ -1,0 +1,53 @@
+#!/usr/bin/env bash
+
+tty=$(tty)
+
+export BASH_SILENCE_DEPRECATION_WARNING=1
+export EDITOR='vim'
+export GPG_TTY=$tty
+export GREP_COLOR='1;36'
+export HISTCONTROL='ignoreboth'
+export HISTFILESIZE="${HISTSIZE}"
+export HISTSIZE='32768'
+export LANG='en_US.UTF-8'
+export LC_ALL='en_US.UTF-8'
+export LSCOLORS='ExGxbEaECxxEhEhBaDaCaD'
+export MANPAGER='less -X';
+export NODE_REPL_HISTORY_SIZE='32768'
+export NODE_REPL_HISTORY=~/.node_history
+export NODE_REPL_MODE='sloppy'
+export NVM_DIR="$HOME/.nvm"
+export PAGER='less'
+export PNPM_HOME="$HOME/.local/share/pnpm"
+export PYTHONIOENCODING='UTF-8'
+export TZ='Europe/London'
+export VISUAL='vim'
+
+# Support colors in less
+export LESS_TERMCAP_mb=$(
+	tput bold
+	tput setaf 1
+)
+export LESS_TERMCAP_md=$(
+	tput bold
+	tput setaf 1
+)
+export LESS_TERMCAP_me=$(tput sgr0)
+export LESS_TERMCAP_se=$(tput sgr0)
+export LESS_TERMCAP_so=$(
+	tput bold
+	tput setaf 3
+	tput setab 4
+)
+export LESS_TERMCAP_ue=$(tput sgr0)
+export LESS_TERMCAP_us=$(
+	tput smul
+	tput bold
+	tput setaf 2
+)
+export LESS_TERMCAP_mh=$(tput dim)
+export LESS_TERMCAP_mr=$(tput rev)
+export LESS_TERMCAP_ZN=$(tput ssubm)
+export LESS_TERMCAP_ZO=$(tput ssupm)
+export LESS_TERMCAP_ZV=$(tput rsubm)
+export LESS_TERMCAP_ZW=$(tput rsupm)

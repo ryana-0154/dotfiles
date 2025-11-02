@@ -47,7 +47,8 @@ spinner() {
 
 center_text() {
 	local text="$1"
-	local term_width=$(tput cols 2>/dev/null || echo 80)
+	local term_width
+  term_width=$(tput cols 2>/dev/null || echo 80)
 	local text_len=${#text}
 	local pad=$(( (term_width - text_len) / 2 ))
 	printf "%*s%s" "$pad" "" "$text"
@@ -83,6 +84,68 @@ install_pkg() {
   fi
 
   sudo apt-get install -qq -y "$pkg" >/dev/null 2>&1 &
+  local pid=$!
+
+  spinner "$pid" "$msg"
+
+  local status
+  if wait "$pid"; then status=0; else status=$?; fi  # <-- works with set -e
+
+  if [[ $status -eq 0 ]]; then
+    printf '\r%55s %bDONE%b' "$msg" "$GREEN" "$NC"
+  else
+    printf '\r%55s %bFAIL%b' "$msg" "$RED" "$NC"
+  fi
+  tput el 2>/dev/null || printf '      '
+  printf '\n'
+
+  return "$status"
+}
+
+ensure_locale() {
+  local msg="Ensuring en_US.UTF-8 locale exists"
+
+  if [[ $SUDO_REFRESHED -eq 0 ]]; then
+    if ! sudo -n true 2>/dev/null; then
+      printf '\n%s\n' "sudo access required to install packages."
+      sudo -v
+    fi
+    SUDO_REFRESHED=1
+  fi
+
+  sudo locale-gen en_US.UTF-8 >/dev/null 2>&1 &
+  local pid=$!
+
+  spinner "$pid" "$msg"
+
+  local status
+  if wait "$pid"; then status=0; else status=$?; fi  # <-- works with set -e
+
+  if [[ $status -eq 0 ]]; then
+    printf '\r%55s %bDONE%b' "$msg" "$GREEN" "$NC"
+  else
+    printf '\r%55s %bFAIL%b' "$msg" "$RED" "$NC"
+  fi
+  tput el 2>/dev/null || printf '      '
+  printf '\n'
+
+  return "$status"
+}
+
+run_command() {
+	local msg=${1:?msg arg required}
+	shift
+	# local cmd=${2:?cmd arg required}
+
+  if [[ $SUDO_REFRESHED -eq 0 ]]; then
+    if ! sudo -n true 2>/dev/null; then
+      printf '\n%s\n' "sudo access required to install packages."
+      sudo -v
+    fi
+    SUDO_REFRESHED=1
+  fi
+
+  "$@" >/dev/null 2>&1 &
   local pid=$!
 
   spinner "$pid" "$msg"
@@ -164,9 +227,15 @@ else
 fi
 
 echo
+run_command "Ensuring en_US.UTF-8 locale exists" sudo locale-gen en_US.UTF-8
+run_command "Updating en_US.UTF-8 locale" sudo update-locale LANG=en_US.UTF-8 LC_ALL=en_US.UTF-8
+echo
+
+echo
 handle_pkg_install
 echo
 
 echo
 echo -e "\033[0;32mDOTFILES INSTALLED SUCCESSFULLY. CAN TEST EXTRA BINS WITH 'ryan_test'\033[0m"
-echo -e "\t - Restart terminal or run 'source ~/.bashrc' to get changes\n"
+echo -e "\t - Restart terminal or run 'source ~/.bashrc' to get changes"
+echo -e "\t - Run 'install-optional' to install optional packages\n"

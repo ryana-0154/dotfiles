@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+ask_permission() {
+    local prompt="Install $1?"
+    local ans
+
+    read -r -p "$prompt (Y/n) [default: Y]: " ans
+    ans=${ans:-y}  # default to yes if empty
+
+    [[ "$ans" =~ ^[Yy]$ ]]
+}
+
+# UV - Great in python
+ask_permission "uv" && curl -LsSf https://astral.sh/uv/install.sh | sh

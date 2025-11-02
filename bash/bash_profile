@@ -1,1 +1,4 @@
-. ~/.bashrc
+#!/usr/bin/env bash
+
+. $HOME/.bashrc
+. "$HOME/.local/bin/env"
