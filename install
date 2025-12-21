@@ -88,7 +88,7 @@ install_pkg() {
   fi
 
 
-  if [ ! is_mac ]; then
+  if [ ! "$(is_mac)" ]; then
     sudo apt-get install -qq -y "$pkg" >/dev/null 2>&1 &
   else
     brew install "$pkg" >/dev/null 2>&1 &
@@ -241,7 +241,7 @@ else
 	printf "may need to run:\n\tvim +'PlugInstall --sync' +qa\n"
 fi
 
-if [ ! is_mac ]; then
+if [ ! "$(is_mac)" ]; then
   echo
   run_command "Ensuring en_US.UTF-8 locale exists" sudo locale-gen en_US.UTF-8
   run_command "Updating en_US.UTF-8 locale" sudo update-locale LANG=en_US.UTF-8 LC_ALL=en_US.UTF-8
