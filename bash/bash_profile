@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
 
-. $HOME/.bashrc
-. "$HOME/.local/bin/env"
+. $HOME/.bashrc 2>/dev/null || true
+. "$HOME/.local/bin/env" 2>/dev/null || true
+. "$HOME/.claude_exports" 2>/dev/null || true

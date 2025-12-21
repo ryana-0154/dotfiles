@@ -1,3 +1,39 @@
+# Vim
 vim/.netrwhist
 vim/spell/*.spl
+
+# Bash
 bash_history
+
+# Claude Code runtime/cache files
+claude/.credentials.json
+claude/history.json
+claude/history.jsonl
+claude/stats-cache.json
+claude/debug/
+claude/file-history/
+claude/plans/
+claude/projects/
+claude/session-env/
+claude/shell-snapshots/
+claude/statsig/
+claude/telemetry/
+claude/todos/
+claude/tsc-cache/
+claude/ide/*.lock
+claude/local/node_modules/
+claude/plugins/marketplaces/
+
+# OS-specific
+.DS_Store
+Thumbs.db
+
+# Editor backups
+*~
+*.swp
+*.swo
+.*.swp
+.*.swo
+
+# Pre-commit cache
+.pre-commit-cache/

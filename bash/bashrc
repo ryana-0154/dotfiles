@@ -82,4 +82,4 @@ path_add "$HOME/.local/share/pnpm" after
 path_clean
 true
 
-. "$HOME/.local/bin/env"
+. "$HOME/.local/bin/env" 2>/dev/null || true

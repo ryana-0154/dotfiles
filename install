@@ -200,6 +200,7 @@ dotfile_folders=(
 	misc
 	htop
 	extra_bins
+	claude
 )
 
 for folder in "${dotfile_folders[@]}"; do
@@ -213,6 +214,10 @@ for folder in "${dotfile_folders[@]}"; do
 
 			symlink "$PWD/vim/vim_folder" "$HOME/.vim"
 			handle_folder "vim"
+			;;
+		claude)
+			[[ -d ~/.claude && ! -L ~/.claude ]] && rm -rf -- "$HOME/.claude"
+			symlink "$PWD/claude" "$HOME/.claude"
 			;;
 		*)
 			handle_folder "$folder"

@@ -16,7 +16,7 @@ complete -d cd pushd rmdir
 
 _repo_complete() {
   local base=~/repos
-  COMPREPLY=($(compgen -W "$(ls -1 "$base")" -- "${COMP_WORDS[1]}"))
+  mapfile -t COMPREPLY < <(compgen -W "$(ls -1 "$base")" -- "${COMP_WORDS[1]}")
 }
 
 _repo_fzf_complete() {
@@ -27,7 +27,7 @@ _repo_fzf_complete() {
           | fzf --query="$cur" --select-1 --exit-0) || return
     COMPREPLY=("$sel")
   else
-    COMPREPLY=($(compgen -W "$(command ls -1 "$base")" -- "$cur"))
+    mapfile -t COMPREPLY < <(compgen -W "$(command ls -1 "$base")" -- "$cur")
   fi
 }
 

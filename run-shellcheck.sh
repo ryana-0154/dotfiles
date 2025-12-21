@@ -25,7 +25,7 @@ find "." -type f \
   -not -path '*/vim/submodules/*' \
   -not -path '*/bash/bash_exports' \
   -exec grep -Il '^#!/usr/bin/env bash' {} + | while read -r file; do
-    
+
     echo "Processing $file"
     shellcheck $file -S warning
 done

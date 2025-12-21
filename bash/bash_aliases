@@ -91,3 +91,4 @@ alias dps='docker ps --format "table {{.Names}}\t{{.Image}}\t{{.Status}}\t{{.Por
 # Python
 alias mkenv='python3 -m venv .venv'
 alias pyact='. .venv/bin/activate'
+alias claude="/home/ryan/.claude/local/claude"

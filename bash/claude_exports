@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+
+export CLAUDE_CODE_ENABLE_TELEMETRY=1
+export OTEL_METRICS_EXPORTER=otlp
+export OTEL_LOGS_EXPORTER=otlp
+export OTEL_EXPORTER_OTLP_PROTOCOL=grpc
+export OTEL_EXPORTER_OTLP_ENDPOINT=http://10.10.10.1:4317
+
+# Optional: Faster metric export for testing (default is 60000ms)
+# Uncomment to export metrics every 10 seconds instead of every minute
+# export OTEL_METRIC_EXPORT_INTERVAL=10000
+
+# Optional: Also output to console for debugging
+# Uncomment to see metrics in the terminal
+# export OTEL_METRICS_EXPORTER=console,otlp
+
+# Optional: Control metric cardinality
+# export OTEL_METRICS_INCLUDE_SESSION_ID=true
+# export OTEL_METRICS_INCLUDE_VERSION=true
+# export OTEL_METRICS_INCLUDE_ACCOUNT_UUID=true
