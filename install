@@ -29,6 +29,10 @@ symlink_folder() {
 	ln -sf "$@"
 }
 
+is_mac() {
+  [[ "$(uname -s)" = 'Darwin' ]]
+}
+
 spinner() {
     local pid=$1
     local msg=$2
@@ -83,7 +87,12 @@ install_pkg() {
     SUDO_REFRESHED=1
   fi
 
-  sudo apt-get install -qq -y "$pkg" >/dev/null 2>&1 &
+
+  if [ ! is_mac ]; then
+    sudo apt-get install -qq -y "$pkg" >/dev/null 2>&1 &
+  else
+    brew install "$pkg" >/dev/null 2>&1 &
+  fi
   local pid=$!
 
   spinner "$pid" "$msg"
@@ -167,6 +176,7 @@ run_command() {
 handle_pkg_install() {
 	read -rp "Install useful packages? (y/n): " ans
 	if [[ "$ans" =~ ^[Yy]$ ]]; then
+    is_mac && echo "Some of these packages may not install on macOS"
 		apt_pkgs=(
 			ripgrep
 			dnsutils
@@ -231,10 +241,18 @@ else
 	printf "may need to run:\n\tvim +'PlugInstall --sync' +qa\n"
 fi
 
-echo
-run_command "Ensuring en_US.UTF-8 locale exists" sudo locale-gen en_US.UTF-8
-run_command "Updating en_US.UTF-8 locale" sudo update-locale LANG=en_US.UTF-8 LC_ALL=en_US.UTF-8
-echo
+if [ ! is_mac ]; then
+  echo
+  run_command "Ensuring en_US.UTF-8 locale exists" sudo locale-gen en_US.UTF-8
+  run_command "Updating en_US.UTF-8 locale" sudo update-locale LANG=en_US.UTF-8 LC_ALL=en_US.UTF-8
+  echo
+else
+  echo
+  run_command "Updating Bash" brew install bash
+  echo "Changing shell to Bash"
+  sudo chsh -s /opt/homebrew/bin/bash $USER
+  echo
+fi
 
 echo
 handle_pkg_install
