@@ -1,0 +1,18 @@
+# Global Settings
+ForwardAgent yes
+HashKnownHosts no
+
+# Default
+Host *
+  #User username
+  StrictHostKeyChecking ask
+  ServerAliveCountMax 6
+  ServerAliveInterval 30
+  KeepAlive yes
+  #ControlMaster auto
+  #ControlPath ~/.ssh/master/%r@%h:%p
+  #ControlPersist 8h
+  #
+
+Host pi
+  Hostname 192.168.1.22
