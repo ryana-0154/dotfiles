@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+git fetch -p && for b in $(git branch -vv --no-color | awk '/: gone]/{print $1}'); do git branch -d "$b"; done

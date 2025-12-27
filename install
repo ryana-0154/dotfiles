@@ -211,6 +211,8 @@ dotfile_folders=(
 	htop
 	extra_bins
 	claude
+  shell
+  ssh
 )
 
 for folder in "${dotfile_folders[@]}"; do
@@ -228,6 +230,10 @@ for folder in "${dotfile_folders[@]}"; do
 		claude)
 			[[ -d ~/.claude && ! -L ~/.claude ]] && rm -rf -- "$HOME/.claude"
 			symlink "$PWD/claude" "$HOME/.claude"
+			;;
+    ssh)
+			[[ -d ~/.ssh && ! -L ~/.ssh ]] && rm -rf -- "$HOME/.ssh"
+			symlink "$PWD/ssh" "$HOME/.ssh"
 			;;
 		*)
 			handle_folder "$folder"
