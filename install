@@ -218,20 +218,27 @@ dotfile_folders=(
 for folder in "${dotfile_folders[@]}"; do
 	case "$folder" in
 		extra_bins)
+      # Copy any existing files into this one before deleting
+      cp -r --update=none ~/"$folder"/* "$PWD/$folder/"
 			[[ -d ~/$folder ]] && rm -rf ~/"$folder"
 			symlink_folder "$PWD/$folder" ~/"$folder"
 			;;
 		vim)
+      # Copy any existing files into this one before deleting
+      cp -r --update=none ~/."$folder"/* "$PWD/$folder/"
 			[[ -d ~/.vim && ! -L ~/.vim ]] && rm -rf -- "$HOME/.vim"
-
 			symlink "$PWD/vim/vim_folder" "$HOME/.vim"
 			handle_folder "vim"
 			;;
 		claude)
+      # Copy any existing files into this one before deleting
+      cp -r --update=none ~/."$folder"/* "$PWD/$folder/"
 			[[ -d ~/.claude && ! -L ~/.claude ]] && rm -rf -- "$HOME/.claude"
 			symlink "$PWD/claude" "$HOME/.claude"
 			;;
     ssh)
+      # Copy any existing files into this one before deleting
+      cp -r --update=none ~/."$folder"/* "$PWD/$folder/"
 			[[ -d ~/.ssh && ! -L ~/.ssh ]] && rm -rf -- "$HOME/.ssh"
 			symlink "$PWD/ssh" "$HOME/.ssh"
 			;;
