@@ -39,5 +39,5 @@ Thumbs.db
 .pre-commit-cache/
 
 # SSH stuff
-./ssh/id_*
-./ssh/known_hosts
+ssh/id_*
+ssh/known_hosts
