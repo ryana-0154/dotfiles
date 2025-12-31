@@ -95,10 +95,10 @@ if [[ "$has_errors" == "true" ]]; then
             fi
         done < "$results_dir/error-summary.txt"
         echo "" >&2
-        echo "Please use the auto-error-resolver agent to fix these errors systematically." >&2
+        echo "Please use the typescript-auto-error-resolver agent to fix these errors systematically." >&2
         echo "The error details have been cached for the resolver to use." >&2
         echo "" >&2
-        echo "Run: Task(subagent_type='auto-error-resolver', description='Fix TypeScript errors', prompt='Fix the TypeScript compilation errors found in the cached error log')" >&2
+        echo "Run: Task(subagent_type='typescript-auto-error-resolver', description='Fix TypeScript errors', prompt='Fix the TypeScript compilation errors found in the cached error log')" >&2
 
         # Exit with status 2 to send feedback to Claude
         exit 2
