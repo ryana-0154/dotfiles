@@ -218,6 +218,69 @@
                     "captureMessage"
                 ]
             }
+        },
+        "ssh-operations": {
+            "type": "domain",
+            "enforcement": "suggest",
+            "priority": "high",
+            "description": "SSH connection and remote command execution guide with security best practices",
+            "promptTriggers": {
+                "keywords": [
+                    "ssh",
+                    "remote host",
+                    "remote server",
+                    "ssh connection",
+                    "ssh into",
+                    "connect to server",
+                    "remote command",
+                    "bastion",
+                    "jump host",
+                    "ssh config",
+                    "ssh key",
+                    "ssh-keygen",
+                    "authorized_keys",
+                    "known_hosts",
+                    "port forwarding",
+                    "ssh tunnel",
+                    "scp",
+                    "sftp",
+                    "remote execution",
+                    "ProxyJump",
+                    "ssh agent",
+                    "ssh-add",
+                    "public key auth",
+                    "host key verification",
+                    "StrictHostKeyChecking"
+                ],
+                "intentPatterns": [
+                    "(connect|ssh).*?(to|into).*(server|host|remote)",
+                    "(execute|run).*?(command|script).*(remote|server)",
+                    "(setup|configure|create).*(ssh|key|authentication)",
+                    "(troubleshoot|debug|fix).*(ssh|connection)",
+                    "(copy|transfer|upload|download).*(file|files).*(ssh|scp|sftp)",
+                    "ssh.*?(tunnel|forward|proxy)",
+                    "(bastion|jump).*?host",
+                    "remote.*?(access|login|connect)"
+                ]
+            },
+            "fileTriggers": {
+                "pathPatterns": [
+                    "**/.ssh/config",
+                    "**/.ssh/*.pub",
+                    "**/authorized_keys",
+                    "**/known_hosts"
+                ],
+                "contentPatterns": [
+                    "ssh\\s+-",
+                    "ssh\\s+[a-zA-Z0-9_-]+@",
+                    "ProxyJump",
+                    "HostName\\s+",
+                    "IdentityFile\\s+",
+                    "ssh-keygen",
+                    "ssh-copy-id",
+                    "ssh-add"
+                ]
+            }
         }
     },
     "notes": {
