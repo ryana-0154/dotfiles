@@ -191,10 +191,16 @@ handle_pkg_install() {
 			python3-pip
 			fzf
 		)
+
+    run_command "Updating APT" "sudo apt update 2>&1"
 		for apt_pkg in "${apt_pkgs[@]}"; do
 			install_pkg "$apt_pkg" || true
 		done
 	fi
+}
+
+exists_and_has_files() {
+  [[ -d "$1" && -n "$(ls -A "$1")" ]]
 }
 
 git submodule init
@@ -218,27 +224,35 @@ dotfile_folders=(
 for folder in "${dotfile_folders[@]}"; do
 	case "$folder" in
 		extra_bins)
-      # Copy any existing files into this one before deleting
-      cp -r --update=none ~/"$folder"/* "$PWD/$folder/"
+      if exists_and_has_files ~/"$folder"; then
+        # Copy any existing files into this one before deleting
+        cp -r --update=none ~/"$folder"/* "$PWD/$folder/"
+      fi
 			[[ -d ~/$folder ]] && rm -rf ~/"$folder"
 			symlink_folder "$PWD/$folder" ~/"$folder"
 			;;
 		vim)
-      # Copy any existing files into this one before deleting
-      cp -r --update=none ~/."$folder"/* "$PWD/$folder/"
+      if exists_and_has_files ~/"$folder"; then
+        # Copy any existing files into this one before deleting
+        cp -r --update=none ~/"$folder"/* "$PWD/$folder/"
+      fi
 			[[ -d ~/.vim && ! -L ~/.vim ]] && rm -rf -- "$HOME/.vim"
 			symlink "$PWD/vim/vim_folder" "$HOME/.vim"
 			handle_folder "vim"
 			;;
 		claude)
-      # Copy any existing files into this one before deleting
-      cp -r --update=none ~/."$folder"/* "$PWD/$folder/"
+      if exists_and_has_files ~/"$folder"; then
+        # Copy any existing files into this one before deleting
+        cp -r --update=none ~/"$folder"/* "$PWD/$folder/"
+      fi
 			[[ -d ~/.claude && ! -L ~/.claude ]] && rm -rf -- "$HOME/.claude"
 			symlink "$PWD/claude" "$HOME/.claude"
 			;;
     ssh)
-      # Copy any existing files into this one before deleting
-      cp -r --update=none ~/."$folder"/* "$PWD/$folder/"
+      if exists_and_has_files ~/"$folder"; then
+        # Copy any existing files into this one before deleting
+        cp -r --update=none ~/"$folder"/* "$PWD/$folder/"
+      fi
 			[[ -d ~/.ssh && ! -L ~/.ssh ]] && rm -rf -- "$HOME/.ssh"
 			symlink "$PWD/ssh" "$HOME/.ssh"
 			;;

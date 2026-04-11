@@ -9,6 +9,7 @@
     ],
     "defaultMode": "acceptEdits"
   },
+  "model": "opus[1m]",
   "enableAllProjectMcpServers": true,
   "enabledMcpjsonServers": [
     "mysql",
@@ -67,5 +68,5 @@
       }
     ]
   },
-  "model": "opus"
+  "skipDangerousModePermissionPrompt": true
 }

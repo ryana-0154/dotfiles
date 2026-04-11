@@ -80,6 +80,20 @@ path_add "/mnt/c/Users/User/AppData/Local/Programs/Microsoft VS Code/bin" before
 path_add "$HOME/.local/share/pnpm" after
 
 path_clean
-true
+
+# WSL sanity guard (node/npm isolation)
+#export PATH=$(echo "$PATH" | tr ':' '\n' | grep -vE '^/mnt/c/' | paste -sd ':' -)
+unset NPM_CONFIG_PREFIX
+unset NPM_CONFIG_CACHE
+unset NODE_PATH
+export NPM_CONFIG_CACHE="$HOME/.npm"
+export NPM_CONFIG_PREFIX="$HOME/.nvm/versions/node/$(node -v)/"
+hash -r
+alias npm='command npm --no-audit --no-fund'
+alias npx='command npx --no-install'
 
 . "$HOME/.local/bin/env" 2>/dev/null || true
+export PATH="$HOME/.local/bin:$PATH"
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+true
