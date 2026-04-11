@@ -15,9 +15,12 @@
 [pull]
 	rebase = false
 
-[branch "master"]
+[branch "main"]
 	remote = origin
-	merge = refs/heads/master
+	merge = refs/heads/main
+
+[init]
+	defaultBranch = main
 
 [color "interactive"]
 	error = red bold
@@ -76,7 +79,7 @@
 	fo  = fetch origin
 	# merge
 	m   = merge
-	mom = merge origin/master
+	mom = merge origin/main
 	# push
 	p   = push
 	pa  = push --all
@@ -87,7 +90,7 @@
 	rc  = rebase --continue
 	ri  = rebase --interactive
 	rs  = rebase --skip
-	rom = rebase origin/master
+	rom = rebase origin/main
 
 	# commit
 	c      = commit -v

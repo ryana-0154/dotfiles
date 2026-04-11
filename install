@@ -215,6 +215,7 @@ dotfile_folders=(
 	wget
 	misc
 	htop
+	ripgrep
 	extra_bins
 	claude
   shell
@@ -255,6 +256,7 @@ for folder in "${dotfile_folders[@]}"; do
       fi
 			[[ -d ~/.ssh && ! -L ~/.ssh ]] && rm -rf -- "$HOME/.ssh"
 			symlink "$PWD/ssh" "$HOME/.ssh"
+			mkdir -p "$HOME/.ssh/master"
 			;;
 		*)
 			handle_folder "$folder"

@@ -1,0 +1,10 @@
+# Smart case: case-insensitive unless pattern has uppercase
+--smart-case
+
+# Ignore common generated/dependency directories
+--glob=!.git
+--glob=!node_modules
+--glob=!vendor
+--glob=!__pycache__
+--glob=!*.pyc
+--glob=!.venv
