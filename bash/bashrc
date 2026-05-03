@@ -10,10 +10,16 @@
 shopt -s cdspell
 shopt -s checkwinsize
 shopt -s extglob
+shopt -s histappend     # append to history, don't overwrite (multi-shell safe)
 
 # Bash Version >= 4
 shopt -s autocd 2>/dev/null || true
 shopt -s dirspell 2>/dev/null || true
+shopt -s globstar 2>/dev/null || true   # ** matches recursively
+
+# History
+HISTTIMEFORMAT='%F %T '
+HISTIGNORE='ls:ll:la:cd:pwd:exit:clear:c:h:history:bg:fg:jobs'
 
 # Prompt
 # Store `tput` colors for future use to reduce fork+exec
@@ -110,6 +116,27 @@ elif [[ -x /opt/homebrew/bin/brew ]]; then
 fi
 command -v zoxide >/dev/null 2>&1 && eval "$(zoxide init bash)"
 [ -f "$HOME/.cargo/env" ] && . "$HOME/.cargo/env"
+
+# fzf — Ctrl-R history, Ctrl-T file picker, ** completion
+if command -v fzf >/dev/null 2>&1; then
+	# bash 4.4+: prefer the modern --bash hook when available
+	if fzf --bash >/dev/null 2>&1; then
+		eval "$(fzf --bash)"
+	else
+		for f in \
+			/usr/share/doc/fzf/examples/key-bindings.bash \
+			/usr/share/fzf/key-bindings.bash \
+			"$HOME/.fzf/shell/key-bindings.bash"; do
+			[ -f "$f" ] && . "$f" && break
+		done
+		for f in \
+			/usr/share/doc/fzf/examples/completion.bash \
+			/usr/share/fzf/completion.bash \
+			"$HOME/.fzf/shell/completion.bash"; do
+			[ -f "$f" ] && . "$f" && break
+		done
+	fi
+fi
 
 # Per-host overrides not tracked in this repo
 . $HOME/.bashrc.local 2>/dev/null || true

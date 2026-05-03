@@ -1,0 +1,61 @@
+name: ci
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  shellcheck:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: false
+      - name: Install shellcheck
+        run: sudo apt-get update && sudo apt-get install -y shellcheck
+      - name: Run shellcheck
+        run: ./run-shellcheck.sh
+
+  pre-commit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+      - uses: pre-commit/action@v3.0.1
+
+  install-dry-run:
+    # Confirm install script at least parses and the bash files source cleanly
+    # in a fresh shell. Doesn't touch $HOME on the runner.
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: false
+      - name: Syntax-check shell entrypoints
+        run: |
+          bash -n install
+          bash -n uninstall
+          bash -n run-shellcheck.sh
+          bash -n bash/bashrc
+          bash -n bash/bash_profile
+          bash -n bash/bash_aliases
+          bash -n bash/bash_functions
+      - name: Source bash files in a clean shell
+        run: |
+          bash --noprofile --norc -c '
+            set -e
+            PS1=test
+            . bash/bash_exports
+            . bash/bash_functions
+            . bash/bash_aliases
+            type extract bak mkd path_add gmb >/dev/null
+            echo "OK"
+          '

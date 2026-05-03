@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+#
+# Per-host overrides — copy to ~/.bashrc.local and edit.
+# This file is sourced last, after bashrc / bash_aliases / bash_functions,
+# so anything set here wins.
+#
+# Not symlinked by ./install on purpose: each machine gets its own copy.
+
+# --- Environment -----------------------------------------------------------
+# export AWS_PROFILE=work
+# export GITHUB_TOKEN=ghp_xxxxxxxxxxxxxxxxxxxx
+# export OPENAI_API_KEY=sk-...
+
+# --- Extra PATH entries ----------------------------------------------------
+# path_add "$HOME/work-tools/bin" before
+# path_add "/opt/company/bin" after
+
+# --- Per-host aliases ------------------------------------------------------
+# alias workvpn='sudo openvpn --config ~/.vpn/work.ovpn'
+# alias prod-db='psql -h db.prod.internal -U readonly app'
+
+# --- Prompt theme ----------------------------------------------------------
+# 0–29 — pick a hue you like, run `colors` once to see them all.
+# set_prompt_colors 7
