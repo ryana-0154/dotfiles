@@ -3,29 +3,28 @@
 # Author: Ryan A
 # Date: November 02, 2025
 # License: MIT
+#
+# Run shellcheck across every tracked file with a `#!/usr/bin/env bash`
+# shebang. Excludes vendored submodules and bash_exports (which references
+# externally-set vars).
 
-spinner() {
-    local pid=$1
-    local msg=$2
-    local delay=0.1
-    local spin='|/-\'
+set -uo pipefail
 
-    # show spinner until pid exits
-    while kill -0 "$pid" 2>/dev/null; do
-        for ((i=0; i<${#spin}; i++)); do
-            # 55-char left pad, then msg + spinner glyph
-            printf '\r%55s %s' "$msg" "${spin:$i:1}"
-            sleep "$delay"
-        done
-    done
-}
+failed=0
 
-find "." -type f \
-  -not -path '*/.git/*' \
-  -not -path '*/vim/submodules/*' \
-  -not -path '*/bash/bash_exports' \
-  -exec grep -Il '^#!/usr/bin/env bash' {} + | while read -r file; do
+while IFS= read -r file; do
+    echo "==> $file"
+    if ! shellcheck -S warning -- "$file"; then
+        failed=1
+    fi
+done < <(
+    find . -type f \
+      -not -path '*/.git/*' \
+      -not -path '*/vim/submodules/*' \
+      -not -path '*/claude/skills/*' \
+      -not -path '*/claude/agents/*' \
+      -not -path '*/bash/bash_exports' \
+      -exec grep -Il '^#!/usr/bin/env bash' {} +
+)
 
-    echo "Processing $file"
-    shellcheck $file -S warning
-done
+exit "$failed"

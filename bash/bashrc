@@ -60,7 +60,6 @@ PS1+='\[${PROMPT_COLORS[0]}\]\$\[${COLOR256[256]}\] '
 # Load external files
 . $HOME/.bash_functions 2>/dev/null || true
 . $HOME/.bash_aliases 2>/dev/null || true
-. $HOME/.bashrc.local 2>/dev/null || true
 
 # load completion
 . /etc/bash/bash_completion 2>/dev/null ||
@@ -75,25 +74,44 @@ PROMPT_COMMAND=_prompt_command
 
 PROMPT_DIRTRIM=6
 
-path_add $HOME/extra_bins before
-path_add "/mnt/c/Users/User/AppData/Local/Programs/Microsoft VS Code/bin" before
+path_add "$HOME/extra_bins" before
 path_add "$HOME/.local/share/pnpm" after
+path_add "/usr/local/go/bin" after
+
+# WSL-only: surface the Windows-side VS Code CLI if present
+if [[ -d "/mnt/c/Users/User/AppData/Local/Programs/Microsoft VS Code/bin" ]]; then
+	path_add "/mnt/c/Users/User/AppData/Local/Programs/Microsoft VS Code/bin" before
+fi
 
 path_clean
 
-# WSL sanity guard (node/npm isolation)
-#export PATH=$(echo "$PATH" | tr ':' '\n' | grep -vE '^/mnt/c/' | paste -sd ':' -)
-unset NPM_CONFIG_PREFIX
-unset NPM_CONFIG_CACHE
-unset NODE_PATH
+# Node/npm isolation: only override when nvm is active
+unset NPM_CONFIG_PREFIX NPM_CONFIG_CACHE NODE_PATH
 export NPM_CONFIG_CACHE="$HOME/.npm"
-export NPM_CONFIG_PREFIX="$HOME/.nvm/versions/node/$(node -v)/"
+if command -v node >/dev/null 2>&1 && [[ -d "$HOME/.nvm/versions/node/$(node -v 2>/dev/null)" ]]; then
+	export NPM_CONFIG_PREFIX="$HOME/.nvm/versions/node/$(node -v)/"
+fi
 hash -r
 alias npm='command npm --no-audit --no-fund'
 alias npx='command npx --no-install'
 
 . "$HOME/.local/bin/env" 2>/dev/null || true
-export PATH="$HOME/.local/bin:$PATH"
+path_add "$HOME/.local/bin" before
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+export VOLTA_HOME="$HOME/.volta"
+[[ -d "$VOLTA_HOME/bin" ]] && path_add "$VOLTA_HOME/bin" before
+
+# Optional integrations — guard each so the file works on any host
+if [[ -x /home/linuxbrew/.linuxbrew/bin/brew ]]; then
+	eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv bash)"
+elif [[ -x /opt/homebrew/bin/brew ]]; then
+	eval "$(/opt/homebrew/bin/brew shellenv bash)"
+fi
+command -v zoxide >/dev/null 2>&1 && eval "$(zoxide init bash)"
+[ -f "$HOME/.cargo/env" ] && . "$HOME/.cargo/env"
+
+# Per-host overrides not tracked in this repo
+. $HOME/.bashrc.local 2>/dev/null || true
 
 true

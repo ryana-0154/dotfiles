@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 
-. $HOME/.bashrc 2>/dev/null || true
-. "$HOME/.local/bin/env" 2>/dev/null || true
+# Login shells: load the interactive rc, then anything that should be
+# available to login-only / non-interactive contexts.
+. "$HOME/.bashrc" 2>/dev/null || true
 . "$HOME/.claude_exports" 2>/dev/null || true

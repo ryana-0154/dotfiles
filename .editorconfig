@@ -1,0 +1,28 @@
+# EditorConfig — https://editorconfig.org
+# Repo-wide editor defaults. Per-language overrides below.
+root = true
+
+[*]
+charset = utf-8
+end_of_line = lf
+insert_final_newline = true
+trim_trailing_whitespace = true
+indent_style = tab
+indent_size = 4
+
+# Configs that conventionally use spaces
+[*.{yml,yaml,toml,json,md}]
+indent_style = space
+indent_size = 2
+
+[*.py]
+indent_style = space
+indent_size = 4
+
+# Makefiles must use tabs
+[{Makefile,*.mk}]
+indent_style = tab
+
+# Markdown: don't auto-trim trailing whitespace (it's significant for line breaks)
+[*.md]
+trim_trailing_whitespace = false

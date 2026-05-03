@@ -61,11 +61,11 @@ alias netstat='ss -tulpen'
 alias iptableslist='sudo iptables -L -v -n'
 alias flushdns='sudo systemd-resolve --flush-caches'
 
-# Package management
-alias update='sudo apt update && sudo apt upgrade -y'
-alias install='sudo apt install'
-alias remove='sudo apt remove'
-alias cleanup='sudo apt autoremove && sudo apt autoclean'
+# Package management (apt-prefixed to avoid shadowing system `install(1)`)
+alias apt-update='sudo apt update && sudo apt upgrade -y'
+alias apt-install='sudo apt install'
+alias apt-remove='sudo apt remove'
+alias apt-cleanup='sudo apt autoremove && sudo apt autoclean'
 
 # Safety
 alias rm='rm -i'
@@ -79,15 +79,22 @@ alias shutdown='sudo systemctl poweroff'
 # Misc
 alias journal='sudo journalctl -xe'
 alias services='systemctl list-units --type=service --state=running'
-alias editbash='nano ~/.bashrc && source ~/.bashrc'
+alias editbash='${EDITOR:-vim} ~/.bashrc && source ~/.bashrc'
 alias reload='source ~/.bashrc'
 alias s='sudo systemctl'
 alias d='sudo docker'
 alias k='kubectl'
 alias dps='docker ps --format "table {{.Names}}\t{{.Image}}\t{{.Status}}\t{{.Ports}}"'
 
-
-
 # Python
 alias mkenv='python3 -m venv .venv'
 alias pyact='. .venv/bin/activate'
+
+# Claude
+alias clauded='claude --dangerously-skip-permissions'
+
+# Convenience
+alias mkcd='mkd'                       # mirror of bash_functions::mkd
+alias path='echo -e ${PATH//:/\\n}'    # print $PATH one entry per line
+alias now='date +"%Y-%m-%d %H:%M:%S"'
+alias week='date +%V'
