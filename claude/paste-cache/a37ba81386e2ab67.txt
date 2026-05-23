@@ -1,0 +1,10 @@
+PS C:\WINDOWS\system32> Get-Process "NVIDIA Overlay" -ErrorAction SilentlyContinue
+gpresult /h $env:TEMP\gp.html ; start $env:TEMP\gp.html
+
+Handles  NPM(K)    PM(K)      WS(K)     CPU(s)     Id  SI ProcessName                                                                                                     
+-------  ------    -----      -----     ------     --  -- -----------                                                                                                     
+   1825      66   168512     198208       3.41  13968   1 NVIDIA Overlay                                                                                                  
+    379      31    56820      99256       1.00  15312   1 NVIDIA Overlay                                                                                                  
+    404      24    14404      37152       0.20  18828   1 NVIDIA Overlay                                                                                                  
+    252      17     9348      23644       0.05  19928   1 NVIDIA Overlay                                                                                                  
+    673      31   135184      86956       0.33  20576   1 NVIDIA Overlay                                                                                                  

@@ -1,0 +1,9 @@
+{
+  "id": "5",
+  "subject": "Coverage gate and STATE update",
+  "description": "Verify all phase requirements covered, update STATE.md, present final status",
+  "activeForm": "Finalizing planning",
+  "status": "pending",
+  "blocks": [],
+  "blockedBy": []
+}

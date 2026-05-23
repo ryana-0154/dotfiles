@@ -1,0 +1,28 @@
+May 23 13:00:21 dnsmasq[1943]: cached www.virustotal.com is 34.54.88.138
+May 23 13:00:21 dnsmasq[1943]: query[AAAA] www.virustotal.com from 192.168.1.223
+**Phase 1: Completed pre-decoding.
+        full event: 'May 23 13:00:00 dnsmasq[1943]: query[A] ec2.web.us-west-2.prod.diagnostic.networking.aws.dev from 192.168.1.134'
+        timestamp: 'May 23 13:00:00'
+        hostname: 'dnsmasq[1943]:'
+
+**Phase 2: Completed decoding.
+        name: 'pihole'
+        query_type: 'A'
+        srcip: '192.168.1.134'
+        url: 'ec2.web.us-west-2.prod.diagnostic.networking.aws.dev'
+
+**Rule debugging:
+        Trying rule: 1 - Generic template for all syslog rules.
+                *Rule 1 matched
+                *Trying child rules
+        Trying rule: 600 - Active Response Messages Grouped
+        Trying rule: 650 - Active Response JSON Messages Grouped
+        Trying rule: 200 - Grouping of wazuh rules.
+        Trying rule: 400 - Rules for Wazuh API events.
+        Trying rule: 420 - Rules for Wazuh API events.
+        Trying rule: 2100 - NFS rules grouped.
+        Trying rule: 2507 - OpenLDAP group.
+        Trying rule: 2550 - rshd messages grouped.
+        Trying rule: 2701 - Ignoring procmail messages.
+        Trying rule: 2800 - Pre-match rule for smartd.
+        Trying rule: 5100 - Pre-match rule for kernel messages.

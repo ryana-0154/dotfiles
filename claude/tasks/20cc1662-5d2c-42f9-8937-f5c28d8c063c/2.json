@@ -1,0 +1,9 @@
+{
+  "id": "2",
+  "subject": "Wave 2 — Plan 03-02 (templ form components)",
+  "description": "Spawn gsd-executor in worktree isolation for plan 03-02 (templ schema_form + field_group + error_summary + confirm_dialog + components.css). Runs in parallel with 03-03.",
+  "activeForm": "Executing Wave 2: 03-02 templ form components",
+  "status": "completed",
+  "blocks": [],
+  "blockedBy": []
+}

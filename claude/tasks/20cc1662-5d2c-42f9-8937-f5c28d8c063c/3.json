@@ -1,0 +1,9 @@
+{
+  "id": "3",
+  "subject": "Wave 2 — Plan 03-03 (XML encoder + upstream POST)",
+  "description": "Spawn gsd-executor in worktree isolation for plan 03-03 (internal/forms encoder + decoder + upstream.go extension). Runs in parallel with 03-02.",
+  "activeForm": "Executing Wave 2: 03-03 XML encoder",
+  "status": "completed",
+  "blocks": [],
+  "blockedBy": []
+}

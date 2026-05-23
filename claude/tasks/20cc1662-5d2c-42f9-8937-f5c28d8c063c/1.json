@@ -1,0 +1,9 @@
+{
+  "id": "1",
+  "subject": "Wave 1 — Plan 03-01 (schema package)",
+  "description": "Spawn gsd-executor in worktree isolation for plan 03-01 (schema DSL + Registry + ControlID + validator/v10 adapter).",
+  "activeForm": "Executing Wave 1: 03-01 schema package",
+  "status": "completed",
+  "blocks": [],
+  "blockedBy": []
+}

@@ -65,3 +65,5 @@ export LESS_TERMCAP_ZV
 LESS_TERMCAP_ZW=$(tput rsupm)
 export LESS_TERMCAP_ZW
 export PATH="$HOME/.local/share/gem/ruby/3.3.0/bin:$PATH"
+export KUBECONFIG=/home/ryan/.kube/k3s-lab
+export PATH="$PATH:/opt/nvim-linux-x86_64/bin"

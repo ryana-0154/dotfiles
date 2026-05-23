@@ -1,0 +1,9 @@
+{
+  "id": "4",
+  "subject": "Verify plans",
+  "description": "Spawn gsd-plan-checker to verify plans meet quality bar; revise up to 3 iterations",
+  "activeForm": "Verifying plans",
+  "status": "in_progress",
+  "blocks": [],
+  "blockedBy": []
+}

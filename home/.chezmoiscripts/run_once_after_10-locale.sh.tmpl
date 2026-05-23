@@ -1,0 +1,17 @@
+{{- if eq .chezmoi.os "linux" -}}
+#!/usr/bin/env bash
+# Ensure en_US.UTF-8 locale exists and is the default.
+set -euo pipefail
+
+if locale -a 2>/dev/null | grep -qiE '^en_US\.utf-?8$'; then
+	exit 0
+fi
+
+if ! command -v sudo >/dev/null 2>&1 || ! command -v locale-gen >/dev/null 2>&1; then
+	echo "skip: locale-gen/sudo unavailable" >&2
+	exit 0
+fi
+
+sudo locale-gen en_US.UTF-8
+sudo update-locale LANG=en_US.UTF-8 LC_ALL=en_US.UTF-8
+{{- end }}

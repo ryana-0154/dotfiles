@@ -1,0 +1,423 @@
+**Phase 1: Completed pre-decoding.
+    full event: 'May 23 13:00:00 dnsmasq[1943]: query[A] ec2.web.us-west-2.prod.diagnostic.networking.aws.dev from 192.168.1.134'
+    timestamp: 'May 23 13:00:00'
+    hostname: 'dnsmasq[1943]:'
+
+**Phase 2: Completed decoding.
+    No decoder matched.
+
+**Phase 1: Completed pre-decoding.
+    full event: 'May 23 13:00:00 dnsmasq[1943]: cached ec2.web.us-west-2.prod.diagnostic.networking.aws.dev is 54.244.28.174'
+    timestamp: 'May 23 13:00:00'
+    hostname: 'dnsmasq[1943]:'
+
+**Phase 2: Completed decoding.
+    No decoder matched.
+
+**Phase 1: Completed pre-decoding.
+    full event: 'May 23 13:00:00 dnsmasq[1943]: query[PTR] 57.1.168.192.in-addr.arpa from 127.0.0.1'
+    timestamp: 'May 23 13:00:00'
+    hostname: 'dnsmasq[1943]:'
+
+**Phase 2: Completed decoding.
+    No decoder matched.
+
+**Phase 1: Completed pre-decoding.
+    full event: 'May 23 13:00:00 dnsmasq[1943]: config 192.168.1.57 is NXDOMAIN'
+    timestamp: 'May 23 13:00:00'
+    hostname: 'dnsmasq[1943]:'
+
+**Phase 2: Completed decoding.
+    No decoder matched.
+
+**Phase 1: Completed pre-decoding.
+    full event: 'May 23 13:00:00 dnsmasq[1943]: query[PTR] 1.0.0.127.in-addr.arpa from 127.0.0.1'
+    timestamp: 'May 23 13:00:00'
+    hostname: 'dnsmasq[1943]:'
+
+**Phase 2: Completed decoding.
+    No decoder matched.
+
+**Phase 1: Completed pre-decoding.
+    full event: 'May 23 13:00:00 dnsmasq[1943]: /etc/hosts 127.0.0.1 is localhost'
+    timestamp: 'May 23 13:00:00'
+    hostname: 'dnsmasq[1943]:'
+
+**Phase 2: Completed decoding.
+    No decoder matched.
+
+**Phase 1: Completed pre-decoding.
+    full event: 'May 23 13:00:00 dnsmasq[1943]: query[PTR] 38.1.168.192.in-addr.arpa from 127.0.0.1'
+    timestamp: 'May 23 13:00:00'
+    hostname: 'dnsmasq[1943]:'
+
+**Phase 2: Completed decoding.
+    No decoder matched.
+
+**Phase 1: Completed pre-decoding.
+    full event: 'May 23 13:00:00 dnsmasq[1943]: config 192.168.1.38 is NXDOMAIN'
+    timestamp: 'May 23 13:00:00'
+    hostname: 'dnsmasq[1943]:'
+
+**Phase 2: Completed decoding.
+    No decoder matched.
+
+**Phase 1: Completed pre-decoding.
+    full event: 'May 23 13:00:00 dnsmasq[1943]: query[PTR] 223.1.168.192.in-addr.arpa from 127.0.0.1'
+    timestamp: 'May 23 13:00:00'
+    hostname: 'dnsmasq[1943]:'
+
+**Phase 2: Completed decoding.
+    No decoder matched.
+
+**Phase 1: Completed pre-decoding.
+    full event: 'May 23 13:00:00 dnsmasq[1943]: config 192.168.1.223 is NXDOMAIN'
+    timestamp: 'May 23 13:00:00'
+    hostname: 'dnsmasq[1943]:'
+
+**Phase 2: Completed decoding.
+    No decoder matched.
+
+**Phase 1: Completed pre-decoding.
+    full event: 'May 23 13:00:00 dnsmasq[1943]: query[PTR] 82.1.168.192.in-addr.arpa from 127.0.0.1'
+    timestamp: 'May 23 13:00:00'
+    hostname: 'dnsmasq[1943]:'
+
+**Phase 2: Completed decoding.
+    No decoder matched.
+
+**Phase 1: Completed pre-decoding.
+    full event: 'May 23 13:00:00 dnsmasq[1943]: config 192.168.1.82 is NXDOMAIN'
+    timestamp: 'May 23 13:00:00'
+    hostname: 'dnsmasq[1943]:'
+
+**Phase 2: Completed decoding.
+    No decoder matched.
+
+**Phase 1: Completed pre-decoding.
+    full event: 'May 23 13:00:00 dnsmasq[1943]: query[PTR] 21.1.168.192.in-addr.arpa from 127.0.0.1'
+    timestamp: 'May 23 13:00:00'
+    hostname: 'dnsmasq[1943]:'
+
+**Phase 2: Completed decoding.
+    No decoder matched.
+
+**Phase 1: Completed pre-decoding.
+    full event: 'May 23 13:00:00 dnsmasq[1943]: config 192.168.1.21 is NXDOMAIN'
+    timestamp: 'May 23 13:00:00'
+    hostname: 'dnsmasq[1943]:'
+
+**Phase 2: Completed decoding.
+    No decoder matched.
+
+**Phase 1: Completed pre-decoding.
+    full event: 'May 23 13:00:00 dnsmasq[1943]: query[PTR] 238.1.168.192.in-addr.arpa from 127.0.0.1'
+    timestamp: 'May 23 13:00:00'
+    hostname: 'dnsmasq[1943]:'
+
+**Phase 2: Completed decoding.
+    No decoder matched.
+
+**Phase 1: Completed pre-decoding.
+    full event: 'May 23 13:00:00 dnsmasq[1943]: config 192.168.1.238 is NXDOMAIN'
+    timestamp: 'May 23 13:00:00'
+    hostname: 'dnsmasq[1943]:'
+
+**Phase 2: Completed decoding.
+    No decoder matched.
+
+**Phase 1: Completed pre-decoding.
+    full event: 'May 23 13:00:00 dnsmasq[1943]: query[PTR] 134.1.168.192.in-addr.arpa from 127.0.0.1'
+    timestamp: 'May 23 13:00:00'
+    hostname: 'dnsmasq[1943]:'
+
+**Phase 2: Completed decoding.
+    No decoder matched.
+
+**Phase 1: Completed pre-decoding.
+    full event: 'May 23 13:00:00 dnsmasq[1943]: config 192.168.1.134 is NXDOMAIN'
+    timestamp: 'May 23 13:00:00'
+    hostname: 'dnsmasq[1943]:'
+
+**Phase 2: Completed decoding.
+    No decoder matched.
+
+**Phase 1: Completed pre-decoding.
+    full event: 'May 23 13:00:00 dnsmasq[1943]: query[PTR] 49.3.168.192.in-addr.arpa from 127.0.0.1'
+    timestamp: 'May 23 13:00:00'
+    hostname: 'dnsmasq[1943]:'
+
+**Phase 2: Completed decoding.
+    No decoder matched.
+
+**Phase 1: Completed pre-decoding.
+    full event: 'May 23 13:00:00 dnsmasq[1943]: config 192.168.3.49 is NXDOMAIN'
+    timestamp: 'May 23 13:00:00'
+    hostname: 'dnsmasq[1943]:'
+
+**Phase 2: Completed decoding.
+    No decoder matched.
+
+**Phase 1: Completed pre-decoding.
+    full event: 'May 23 13:00:00 dnsmasq[1943]: query[PTR] 121.1.168.192.in-addr.arpa from 127.0.0.1'
+    timestamp: 'May 23 13:00:00'
+    hostname: 'dnsmasq[1943]:'
+
+**Phase 2: Completed decoding.
+    No decoder matched.
+
+**Phase 1: Completed pre-decoding.
+    full event: 'May 23 13:00:00 dnsmasq[1943]: config 192.168.1.121 is NXDOMAIN'
+    timestamp: 'May 23 13:00:00'
+    hostname: 'dnsmasq[1943]:'
+
+**Phase 2: Completed decoding.
+    No decoder matched.
+
+**Phase 1: Completed pre-decoding.
+    full event: 'May 23 13:00:00 dnsmasq[1943]: query[PTR] 27.1.168.192.in-addr.arpa from 127.0.0.1'
+    timestamp: 'May 23 13:00:00'
+    hostname: 'dnsmasq[1943]:'
+
+**Phase 2: Completed decoding.
+    No decoder matched.
+
+**Phase 1: Completed pre-decoding.
+    full event: 'May 23 13:00:00 dnsmasq[1943]: config 192.168.1.27 is NXDOMAIN'
+    timestamp: 'May 23 13:00:00'
+    hostname: 'dnsmasq[1943]:'
+
+**Phase 2: Completed decoding.
+    No decoder matched.
+
+**Phase 1: Completed pre-decoding.
+    full event: 'May 23 13:00:00 dnsmasq[1943]: query[PTR] 197.1.168.192.in-addr.arpa from 127.0.0.1'
+    timestamp: 'May 23 13:00:00'
+    hostname: 'dnsmasq[1943]:'
+
+**Phase 2: Completed decoding.
+    No decoder matched.
+
+**Phase 1: Completed pre-decoding.
+    full event: 'May 23 13:00:00 dnsmasq[1943]: config 192.168.1.197 is NXDOMAIN'
+    timestamp: 'May 23 13:00:00'
+    hostname: 'dnsmasq[1943]:'
+
+**Phase 2: Completed decoding.
+    No decoder matched.
+
+**Phase 1: Completed pre-decoding.
+    full event: 'May 23 13:00:00 dnsmasq[1943]: query[PTR] 146.1.168.192.in-addr.arpa from 127.0.0.1'
+    timestamp: 'May 23 13:00:00'
+    hostname: 'dnsmasq[1943]:'
+
+**Phase 2: Completed decoding.
+    No decoder matched.
+
+**Phase 1: Completed pre-decoding.
+    full event: 'May 23 13:00:00 dnsmasq[1943]: config 192.168.1.146 is NXDOMAIN'
+    timestamp: 'May 23 13:00:00'
+    hostname: 'dnsmasq[1943]:'
+
+**Phase 2: Completed decoding.
+    No decoder matched.
+
+**Phase 1: Completed pre-decoding.
+    full event: 'May 23 13:00:00 dnsmasq[1943]: query[PTR] 209.1.168.192.in-addr.arpa from 127.0.0.1'
+    timestamp: 'May 23 13:00:00'
+    hostname: 'dnsmasq[1943]:'
+
+**Phase 2: Completed decoding.
+    No decoder matched.
+
+**Phase 1: Completed pre-decoding.
+    full event: 'May 23 13:00:00 dnsmasq[1943]: config 192.168.1.209 is NXDOMAIN'
+    timestamp: 'May 23 13:00:00'
+    hostname: 'dnsmasq[1943]:'
+
+**Phase 2: Completed decoding.
+    No decoder matched.
+
+**Phase 1: Completed pre-decoding.
+    full event: 'May 23 13:00:00 dnsmasq[1943]: query[PTR] 236.1.168.192.in-addr.arpa from 127.0.0.1'
+    timestamp: 'May 23 13:00:00'
+    hostname: 'dnsmasq[1943]:'
+
+**Phase 2: Completed decoding.
+    No decoder matched.
+
+**Phase 1: Completed pre-decoding.
+    full event: 'May 23 13:00:00 dnsmasq[1943]: config 192.168.1.236 is NXDOMAIN'
+    timestamp: 'May 23 13:00:00'
+    hostname: 'dnsmasq[1943]:'
+
+**Phase 2: Completed decoding.
+    No decoder matched.
+
+**Phase 1: Completed pre-decoding.
+    full event: 'May 23 13:00:00 dnsmasq[1943]: query[PTR] 3.1.168.192.in-addr.arpa from 127.0.0.1'
+    timestamp: 'May 23 13:00:00'
+    hostname: 'dnsmasq[1943]:'
+
+**Phase 2: Completed decoding.
+    No decoder matched.
+
+**Phase 1: Completed pre-decoding.
+    full event: 'May 23 13:00:00 dnsmasq[1943]: config 192.168.1.3 is NXDOMAIN'
+    timestamp: 'May 23 13:00:00'
+    hostname: 'dnsmasq[1943]:'
+
+**Phase 2: Completed decoding.
+    No decoder matched.
+
+**Phase 1: Completed pre-decoding.
+    full event: 'May 23 13:00:00 dnsmasq[1943]: query[PTR] 58.1.168.192.in-addr.arpa from 127.0.0.1'
+    timestamp: 'May 23 13:00:00'
+    hostname: 'dnsmasq[1943]:'
+
+**Phase 2: Completed decoding.
+    No decoder matched.
+
+**Phase 1: Completed pre-decoding.
+    full event: 'May 23 13:00:00 dnsmasq[1943]: config 192.168.1.58 is NXDOMAIN'
+    timestamp: 'May 23 13:00:00'
+    hostname: 'dnsmasq[1943]:'
+
+**Phase 2: Completed decoding.
+    No decoder matched.
+
+**Phase 1: Completed pre-decoding.
+    full event: 'May 23 13:00:00 dnsmasq[1943]: query[PTR] 132.1.168.192.in-addr.arpa from 127.0.0.1'
+    timestamp: 'May 23 13:00:00'
+    hostname: 'dnsmasq[1943]:'
+
+**Phase 2: Completed decoding.
+    No decoder matched.
+
+**Phase 1: Completed pre-decoding.
+    full event: 'May 23 13:00:00 dnsmasq[1943]: config 192.168.1.132 is NXDOMAIN'
+    timestamp: 'May 23 13:00:00'
+    hostname: 'dnsmasq[1943]:'
+
+**Phase 2: Completed decoding.
+    No decoder matched.
+
+**Phase 1: Completed pre-decoding.
+    full event: 'May 23 13:00:00 dnsmasq[1943]: query[PTR] 73.1.168.192.in-addr.arpa from 127.0.0.1'
+    timestamp: 'May 23 13:00:00'
+    hostname: 'dnsmasq[1943]:'
+
+**Phase 2: Completed decoding.
+    No decoder matched.
+
+**Phase 1: Completed pre-decoding.
+    full event: 'May 23 13:00:00 dnsmasq[1943]: config 192.168.1.73 is NXDOMAIN'
+    timestamp: 'May 23 13:00:00'
+    hostname: 'dnsmasq[1943]:'
+
+**Phase 2: Completed decoding.
+    No decoder matched.
+
+**Phase 1: Completed pre-decoding.
+    full event: 'May 23 13:00:00 dnsmasq[1943]: query[PTR] 1.0.0.127.in-addr.arpa from 127.0.0.1'
+    timestamp: 'May 23 13:00:00'
+    hostname: 'dnsmasq[1943]:'
+
+**Phase 2: Completed decoding.
+    No decoder matched.
+
+**Phase 1: Completed pre-decoding.
+    full event: 'May 23 13:00:00 dnsmasq[1943]: /etc/hosts 127.0.0.1 is localhost'
+    timestamp: 'May 23 13:00:00'
+    hostname: 'dnsmasq[1943]:'
+
+**Phase 2: Completed decoding.
+    No decoder matched.
+
+**Phase 1: Completed pre-decoding.
+    full event: 'May 23 13:00:01 dnsmasq[1943]: query[A] www.virustotal.com from 192.168.1.223'
+    timestamp: 'May 23 13:00:01'
+    hostname: 'dnsmasq[1943]:'
+
+**Phase 2: Completed decoding.
+    No decoder matched.
+
+**Phase 1: Completed pre-decoding.
+    full event: 'May 23 13:00:01 dnsmasq[1943]: cached www.virustotal.com is 34.54.88.138'
+    timestamp: 'May 23 13:00:01'
+    hostname: 'dnsmasq[1943]:'
+
+**Phase 2: Completed decoding.
+    No decoder matched.
+
+**Phase 1: Completed pre-decoding.
+    full event: 'May 23 13:00:01 dnsmasq[1943]: query[AAAA] www.virustotal.com from 192.168.1.223'
+    timestamp: 'May 23 13:00:01'
+    hostname: 'dnsmasq[1943]:'
+
+**Phase 2: Completed decoding.
+    No decoder matched.
+
+**Phase 1: Completed pre-decoding.
+    full event: 'May 23 13:00:01 dnsmasq[1943]: cached www.virustotal.com is NODATA-IPv6'
+    timestamp: 'May 23 13:00:01'
+    hostname: 'dnsmasq[1943]:'
+
+**Phase 2: Completed decoding.
+    No decoder matched.
+
+**Phase 1: Completed pre-decoding.
+    full event: 'May 23 13:00:01 dnsmasq[1943]: query[A] www.virustotal.com from 192.168.1.223'
+    timestamp: 'May 23 13:00:01'
+    hostname: 'dnsmasq[1943]:'
+
+**Phase 2: Completed decoding.
+    No decoder matched.
+
+**Phase 1: Completed pre-decoding.
+    full event: 'May 23 13:00:01 dnsmasq[1943]: cached www.virustotal.com is 34.54.88.138'
+    timestamp: 'May 23 13:00:01'
+    hostname: 'dnsmasq[1943]:'
+
+**Phase 2: Completed decoding.
+    No decoder matched.
+
+**Phase 1: Completed pre-decoding.
+    full event: 'May 23 13:00:01 dnsmasq[1943]: query[AAAA] www.virustotal.com from 192.168.1.223'
+    timestamp: 'May 23 13:00:01'
+    hostname: 'dnsmasq[1943]:'
+
+**Phase 2: Completed decoding.
+    No decoder matched.
+
+**Phase 1: Completed pre-decoding.
+    full event: 'May 23 13:00:01 dnsmasq[1943]: cached www.virustotal.com is NODATA-IPv6'
+    timestamp: 'May 23 13:00:01'
+    hostname: 'dnsmasq[1943]:'
+
+**Phase 2: Completed decoding.
+    No decoder matched.
+
+**Phase 1: Completed pre-decoding.
+    full event: 'May 23 13:00:21 dnsmasq[1943]: query[A] www.virustotal.com from 192.168.1.223'
+    timestamp: 'May 23 13:00:21'
+    hostname: 'dnsmasq[1943]:'
+
+**Phase 2: Completed decoding.
+    No decoder matched.
+
+**Phase 1: Completed pre-decoding.
+    full event: 'May 23 13:00:21 dnsmasq[1943]: cached www.virustotal.com is 34.54.88.138'
+    timestamp: 'May 23 13:00:21'
+    hostname: 'dnsmasq[1943]:'
+
+**Phase 2: Completed decoding.
+    No decoder matched.
+
+**Phase 1: Completed pre-decoding.
+    full event: 'May 23 13:00:21 dnsmasq[1943]: query[AAAA] www.virustotal.com from 192.168.1.223'
+    timestamp: 'May 23 13:00:21'
+    hostname: 'dnsmasq[1943]:'
+
+**Phase 2: Completed decoding.
+    No decoder matched.

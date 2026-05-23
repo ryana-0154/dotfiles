@@ -1,0 +1,9 @@
+{
+  "id": "4",
+  "subject": "Phase 03 verification + state updates",
+  "description": "After all 3 plans complete, run gsd-verifier, update STATE.md and ROADMAP.md, emit completion checkpoint.",
+  "activeForm": "Verifying phase 03",
+  "status": "in_progress",
+  "blocks": [],
+  "blockedBy": []
+}

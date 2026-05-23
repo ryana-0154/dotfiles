@@ -1,0 +1,9 @@
+{
+  "id": "3",
+  "subject": "Plan Phase 1",
+  "description": "Spawn gsd-planner to create PLAN.md files for Phase 1 scaffold-and-guards",
+  "activeForm": "Planning Phase 1",
+  "status": "completed",
+  "blocks": [],
+  "blockedBy": []
+}

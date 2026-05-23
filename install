@@ -1,291 +1,49 @@
 #!/usr/bin/env bash
 #
-# Symlinks all the files, so you can git pull this repo and it updates
-
-# Author: Ryan A
-# Date: November 02, 2025
-# License: MIT
+# Bootstrap: install chezmoi if missing, init it against this repo, and apply.
+#
+# Usage:
+#   ./install               # apply this checkout
+#   ./install --dry-run     # show what chezmoi would do
+#
+# After bootstrap, manage dotfiles with chezmoi directly:
+#   chezmoi edit ~/.bashrc
+#   chezmoi diff
+#   chezmoi apply
+#   chezmoi update            # git pull + apply
 
 set -euo pipefail
 
-readonly GREEN='\033[0;32m'
-readonly RED='\033[0;31m'
-readonly NC='\033[0m'
-SUDO_REFRESHED=0
+REPO_DIR=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)
 
-defaults() {
-	echo defaults "$@"
-	command defaults "$@"
-}
-
-# Verbose ln (Thanks Dave Eddy!)
-symlink() {
-	printf '%55s -> %s\n' "${1/#$HOME/\~}" "${2/#$HOME/\~}"
-	ln -nsf "$@"
-}
-
-symlink_folder() {
-	printf '%55s -> %s\n' "${1/#$HOME/\~}" "${2/#$HOME/\~}"
-	ln -sf "$@"
-}
-
-is_mac() {
-  [[ "$(uname -s)" = 'Darwin' ]]
-}
-
-spinner() {
-    local pid=$1
-    local msg=$2
-    local delay=0.1
-    local spin='|/-\'
-
-    # show spinner until pid exits
-    while kill -0 "$pid" 2>/dev/null; do
-        for ((i=0; i<${#spin}; i++)); do
-            # 55-char left pad, then msg + spinner glyph
-            printf '\r%55s %s' "$msg" "${spin:$i:1}"
-            sleep "$delay"
-        done
-    done
-}
-
-center_text() {
-	local text="$1"
-	local term_width
-  term_width=$(tput cols 2>/dev/null || echo 80)
-	local text_len=${#text}
-	local pad=$(( (term_width - text_len) / 2 ))
-	printf "%*s%s" "$pad" "" "$text"
-}
-
-handle_folder() {
-	local folder=$1
-	local file
-	for file in "$folder"/*; do
-		[ -f "$file" ] || continue  # skip if not a regular file
-
-		local filename
-		filename=$(basename -- "$file")
-		# Check if file exists and is not a symlink. If it is, delete it
-		if [[ -d "$HOME/.$filename" && ! -L "$HOME/.$filename" ]]; then
-			rm -rf -- "$HOME/.$filename"
-		fi
-
-		symlink "$PWD/$folder/$filename" "$HOME/.$filename"
-	done
-}
-
-install_pkg() {
-  local pkg=${1:?pkg arg required}       # <-- prevents unbound
-  local msg="Installing $pkg"
-
-  if [[ $SUDO_REFRESHED -eq 0 ]]; then
-    if ! sudo -n true 2>/dev/null; then
-      printf '\n%s\n' "sudo access required to install packages."
-      sudo -v
-    fi
-    SUDO_REFRESHED=1
-  fi
-
-
-  if [ ! "$(is_mac)" ]; then
-    sudo apt-get install -qq -y "$pkg" >/dev/null 2>&1 &
-  else
-    brew install "$pkg" >/dev/null 2>&1 &
-  fi
-  local pid=$!
-
-  spinner "$pid" "$msg"
-
-  local status
-  if wait "$pid"; then status=0; else status=$?; fi  # <-- works with set -e
-
-  if [[ $status -eq 0 ]]; then
-    printf '\r%55s %bDONE%b' "$msg" "$GREEN" "$NC"
-  else
-    printf '\r%55s %bFAIL%b' "$msg" "$RED" "$NC"
-  fi
-  tput el 2>/dev/null || printf '      '
-  printf '\n'
-
-  return "$status"
-}
-
-ensure_locale() {
-  local msg="Ensuring en_US.UTF-8 locale exists"
-
-  if [[ $SUDO_REFRESHED -eq 0 ]]; then
-    if ! sudo -n true 2>/dev/null; then
-      printf '\n%s\n' "sudo access required to install packages."
-      sudo -v
-    fi
-    SUDO_REFRESHED=1
-  fi
-
-  sudo locale-gen en_US.UTF-8 >/dev/null 2>&1 &
-  local pid=$!
-
-  spinner "$pid" "$msg"
-
-  local status
-  if wait "$pid"; then status=0; else status=$?; fi  # <-- works with set -e
-
-  if [[ $status -eq 0 ]]; then
-    printf '\r%55s %bDONE%b' "$msg" "$GREEN" "$NC"
-  else
-    printf '\r%55s %bFAIL%b' "$msg" "$RED" "$NC"
-  fi
-  tput el 2>/dev/null || printf '      '
-  printf '\n'
-
-  return "$status"
-}
-
-run_command() {
-	local msg=${1:?msg arg required}
-	shift
-	# local cmd=${2:?cmd arg required}
-
-  if [[ $SUDO_REFRESHED -eq 0 ]]; then
-    if ! sudo -n true 2>/dev/null; then
-      printf '\n%s\n' "sudo access required to install packages."
-      sudo -v
-    fi
-    SUDO_REFRESHED=1
-  fi
-
-  "$@" >/dev/null 2>&1 &
-  local pid=$!
-
-  spinner "$pid" "$msg"
-
-  local status
-  if wait "$pid"; then status=0; else status=$?; fi  # <-- works with set -e
-
-  if [[ $status -eq 0 ]]; then
-    printf '\r%55s %bDONE%b' "$msg" "$GREEN" "$NC"
-  else
-    printf '\r%55s %bFAIL%b' "$msg" "$RED" "$NC"
-  fi
-  tput el 2>/dev/null || printf '      '
-  printf '\n'
-
-  return "$status"
-}
-
-handle_pkg_install() {
-	read -rp "Install useful packages? (y/n): " ans
-	if [[ "$ans" =~ ^[Yy]$ ]]; then
-    is_mac && echo "Some of these packages may not install on macOS"
-		apt_pkgs=(
-			ripgrep
-			dnsutils
-			net-tools
-			tcpdump
-			ncdu
-			jq
-			sysstat
-			nmap
-			tree
-			yq
-			python3-pip
-			fzf
-		)
-
-    run_command "Updating APT" "sudo apt update 2>&1"
-		for apt_pkg in "${apt_pkgs[@]}"; do
-			install_pkg "$apt_pkg" || true
-		done
+ensure_chezmoi() {
+	if command -v chezmoi >/dev/null 2>&1; then
+		return
 	fi
+	echo "chezmoi not found — installing to ~/.local/bin"
+	mkdir -p "$HOME/.local/bin"
+	sh -c "$(curl -fsLS get.chezmoi.io)" -- -b "$HOME/.local/bin"
+	export PATH="$HOME/.local/bin:$PATH"
 }
 
-exists_and_has_files() {
-  [[ -d "$1" && -n "$(ls -A "$1")" ]]
+ensure_submodules() {
+	[[ -f "$REPO_DIR/.gitmodules" ]] || return 0
+	git -C "$REPO_DIR" submodule update --init --recursive
 }
 
-git submodule init
-git submodule update
+ensure_chezmoi
+ensure_submodules
 
-dotfile_folders=(
-	bash
-	git
-	tmux
-	vim
-	curl
-	wget
-	misc
-	htop
-	extra_bins
-	claude
-  shell
-  ssh
-)
+# Point chezmoi at this checkout. --source overrides the default
+# ~/.local/share/chezmoi so the working tree stays where you cloned it.
+chezmoi init --source="$REPO_DIR" "$@"
+chezmoi apply --source="$REPO_DIR" "$@"
 
-for folder in "${dotfile_folders[@]}"; do
-	case "$folder" in
-		extra_bins)
-      if exists_and_has_files ~/"$folder"; then
-        # Copy any existing files into this one before deleting
-        cp -r --update=none ~/"$folder"/* "$PWD/$folder/"
-      fi
-			[[ -d ~/$folder ]] && rm -rf ~/"$folder"
-			symlink_folder "$PWD/$folder" ~/"$folder"
-			;;
-		vim)
-      if exists_and_has_files ~/"$folder"; then
-        # Copy any existing files into this one before deleting
-        cp -r --update=none ~/"$folder"/* "$PWD/$folder/"
-      fi
-			[[ -d ~/.vim && ! -L ~/.vim ]] && rm -rf -- "$HOME/.vim"
-			symlink "$PWD/vim/vim_folder" "$HOME/.vim"
-			handle_folder "vim"
-			;;
-		claude)
-      if exists_and_has_files ~/"$folder"; then
-        # Copy any existing files into this one before deleting
-        cp -r --update=none ~/"$folder"/* "$PWD/$folder/"
-      fi
-			[[ -d ~/.claude && ! -L ~/.claude ]] && rm -rf -- "$HOME/.claude"
-			symlink "$PWD/claude" "$HOME/.claude"
-			;;
-    ssh)
-      if exists_and_has_files ~/"$folder"; then
-        # Copy any existing files into this one before deleting
-        cp -r --update=none ~/"$folder"/* "$PWD/$folder/"
-      fi
-			[[ -d ~/.ssh && ! -L ~/.ssh ]] && rm -rf -- "$HOME/.ssh"
-			symlink "$PWD/ssh" "$HOME/.ssh"
-			;;
-		*)
-			handle_folder "$folder"
-			;;
-	esac
-done
+cat <<'EOF'
 
-if [[ -t 1 ]]; then
-	vim '+PlugInstall --sync' +qa
-else
-	printf "may need to run:\n\tvim +'PlugInstall --sync' +qa\n"
-fi
-
-if [ ! "$(is_mac)" ]; then
-  echo
-  run_command "Ensuring en_US.UTF-8 locale exists" sudo locale-gen en_US.UTF-8
-  run_command "Updating en_US.UTF-8 locale" sudo update-locale LANG=en_US.UTF-8 LC_ALL=en_US.UTF-8
-  echo
-else
-  echo
-  run_command "Updating Bash" brew install bash
-  echo "Changing shell to Bash"
-  sudo chsh -s /opt/homebrew/bin/bash $USER
-  echo
-fi
-
-echo
-handle_pkg_install
-echo
-
-echo
-echo -e "\033[0;32mDOTFILES INSTALLED SUCCESSFULLY. CAN TEST EXTRA BINS WITH 'ryan_test'\033[0m"
-echo -e "\t - Restart terminal or run 'source ~/.bashrc' to get changes"
-echo -e "\t - Run 'install-optional' to install optional packages\n"
+Done. Useful follow-ups:
+  chezmoi diff             # preview pending changes
+  chezmoi apply            # apply changes
+  chezmoi edit ~/.bashrc   # edit the source file
+  install-optional         # optional packages (if installed via extra_bins)
+EOF

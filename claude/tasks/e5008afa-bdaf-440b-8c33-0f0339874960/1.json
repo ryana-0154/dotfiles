@@ -1,0 +1,9 @@
+{
+  "id": "1",
+  "subject": "Research Phase 1 implementation",
+  "description": "Spawn gsd-phase-researcher to investigate MelonLoader scaffold, S1API integration, manifest.json schema, multiplayer detection, GameInternals isolation patterns",
+  "activeForm": "Researching Phase 1",
+  "status": "completed",
+  "blocks": [],
+  "blockedBy": []
+}

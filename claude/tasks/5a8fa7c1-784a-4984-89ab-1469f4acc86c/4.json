@@ -1,0 +1,9 @@
+{
+  "id": "4",
+  "subject": "Phase verification + close-out",
+  "description": "Code review, regression gate, verify_phase_goal, security gate check, update STATE/ROADMAP for phase completion",
+  "activeForm": "Verifying phase 6 and closing out",
+  "status": "in_progress",
+  "blocks": [],
+  "blockedBy": []
+}

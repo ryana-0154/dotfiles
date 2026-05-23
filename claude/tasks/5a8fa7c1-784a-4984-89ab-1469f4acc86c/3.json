@@ -1,0 +1,9 @@
+{
+  "id": "3",
+  "subject": "Wave 2: Execute plan 06-03 (Playwright live verification, checkpoint)",
+  "description": "Spawn executor for 06-03 — non-autonomous, contains a Playwright live-browser checkpoint requiring user interaction",
+  "activeForm": "Executing Wave 2 (06-03 Playwright verification)",
+  "status": "completed",
+  "blocks": [],
+  "blockedBy": []
+}

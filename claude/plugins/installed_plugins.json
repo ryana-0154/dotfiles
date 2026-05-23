@@ -1,0 +1,33 @@
+{
+  "version": 2,
+  "plugins": {
+    "frontend-design@claude-plugins-official": [
+      {
+        "scope": "user",
+        "installPath": "/home/ryan/.claude/plugins/cache/claude-plugins-official/frontend-design/unknown",
+        "version": "unknown",
+        "installedAt": "2026-05-02T15:52:35.886Z",
+        "lastUpdated": "2026-05-02T15:52:35.886Z"
+      }
+    ],
+    "rust-analyzer-lsp@claude-plugins-official": [
+      {
+        "scope": "user",
+        "installPath": "/home/ryan/.claude/plugins/cache/claude-plugins-official/rust-analyzer-lsp/1.0.0",
+        "version": "1.0.0",
+        "installedAt": "2026-05-09T11:00:34.063Z",
+        "lastUpdated": "2026-05-09T11:00:34.063Z"
+      }
+    ],
+    "stripe@claude-plugins-official": [
+      {
+        "scope": "user",
+        "installPath": "/home/ryan/.claude/plugins/cache/claude-plugins-official/stripe/0.1.0",
+        "version": "0.1.0",
+        "installedAt": "2026-05-09T13:15:55.987Z",
+        "lastUpdated": "2026-05-09T13:15:55.987Z",
+        "gitCommitSha": "14623416d84fdfad0aea8744d4c6f838ebc87654"
+      }
+    ]
+  }
+}

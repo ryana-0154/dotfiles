@@ -1,0 +1,9 @@
+{
+  "id": "2",
+  "subject": "Spawn pattern mapper",
+  "description": "Run gsd-pattern-mapper to identify analog patterns (skip if first phase has no codebase yet)",
+  "activeForm": "Mapping patterns",
+  "status": "completed",
+  "blocks": [],
+  "blockedBy": []
+}

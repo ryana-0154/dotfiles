@@ -1,0 +1,9 @@
+{
+  "id": "1",
+  "subject": "Wave 1: Execute plans 06-01 + 06-02 in parallel",
+  "description": "Spawn parallel executor agents in worktrees for CSP relaxation (06-01) and Datastar interval syntax migration (06-02)",
+  "activeForm": "Executing Wave 1 (06-01 CSP + 06-02 interval syntax)",
+  "status": "completed",
+  "blocks": [],
+  "blockedBy": []
+}

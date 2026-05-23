@@ -508,3 +508,13 @@ whatis_cmd() {
 	local cmd=${1:?usage: whatis_cmd <name>}
 	type -a "$cmd" 2>/dev/null
 }
+
+# Default `git clone` into ~/repos unless already inside it
+git() {
+	if [[ $1 == clone && $PWD != "$HOME/repos"* ]]; then
+		mkdir -p "$HOME/repos"
+		(cd "$HOME/repos" && command git "$@")
+	else
+		command git "$@"
+	fi
+}

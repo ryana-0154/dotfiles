@@ -1,0 +1,9 @@
+{
+  "id": "1",
+  "subject": "Spawn gsd-planner for Phase 3",
+  "description": "Generate PLAN.md files for Phase 3 using RESEARCH.md, UI-SPEC.md, PATTERNS.md, REQUIREMENTS.md, and ROADMAP.md",
+  "activeForm": "Spawning planner",
+  "status": "in_progress",
+  "blocks": [],
+  "blockedBy": []
+}

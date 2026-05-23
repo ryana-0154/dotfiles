@@ -1,0 +1,9 @@
+{
+  "id": "2",
+  "subject": "Merge worktrees, run hooks + post-merge tests, update tracking",
+  "description": "Merge wave 1 worktree branches, run pre-commit hooks, run go test ./..., then update STATE.md/ROADMAP.md if green",
+  "activeForm": "Merging wave 1 worktrees and running post-merge tests",
+  "status": "completed",
+  "blocks": [],
+  "blockedBy": []
+}

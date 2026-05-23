@@ -1,0 +1,35 @@
+#!/usr/bin/env bash
+# Optional: install commonly-used packages. Skipped when non-interactive.
+set -euo pipefail
+
+if [[ ! -t 0 || ! -t 1 ]]; then
+	echo "skip: package install (no TTY). Re-run 'chezmoi apply' interactively to be prompted." >&2
+	exit 0
+fi
+
+read -rp "Install useful packages? (y/N): " ans
+[[ "$ans" =~ ^[Yy]$ ]] || exit 0
+
+pkgs=(ripgrep dnsutils net-tools tcpdump ncdu jq sysstat nmap tree yq python3-pip fzf)
+
+{{ if eq .chezmoi.os "linux" -}}
+sudo apt-get update -qq
+for p in "${pkgs[@]}"; do
+	printf '  installing %s ... ' "$p"
+	if sudo apt-get install -qq -y "$p" >/dev/null 2>&1; then
+		echo "ok"
+	else
+		echo "fail"
+	fi
+done
+{{- else if eq .chezmoi.os "darwin" -}}
+command -v brew >/dev/null 2>&1 || { echo "brew not found"; exit 0; }
+for p in "${pkgs[@]}"; do
+	printf '  installing %s ... ' "$p"
+	if brew list "$p" >/dev/null 2>&1 || brew install "$p" >/dev/null 2>&1; then
+		echo "ok"
+	else
+		echo "fail"
+	fi
+done
+{{- end }}

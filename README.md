@@ -1,8 +1,8 @@
 # Dotfiles
 
-Personal `~/` configuration, organized as one directory per tool. Heavily
-inspired by [Dave Eddy's dotfiles](https://github.com/bahamas10/dotfiles) and
-the patterns at [dotfiles.github.io](https://dotfiles.github.io/).
+Personal `~/` configuration, managed with [chezmoi](https://www.chezmoi.io/).
+Heavily inspired by [Dave Eddy's dotfiles](https://github.com/bahamas10/dotfiles)
+and the patterns at [dotfiles.github.io](https://dotfiles.github.io/).
 
 ## Install
 
@@ -12,27 +12,39 @@ cd ~/repos/dotfiles
 ./install
 ```
 
-The `install` script symlinks each tracked file from `<dir>/<name>` into
-`~/.<name>` (or, for `vim`/`claude`/`ssh`/`extra_bins`, the whole directory).
-Re-run it any time after pulling — it's idempotent.
+`install` is a thin bootstrap: it installs `chezmoi` (if missing), points it at
+this checkout via `--source=$PWD`, and runs `chezmoi apply`.
 
-> `install` will offer to install useful APT packages (or Homebrew on macOS).
-> Say no if you'd rather manage them yourself.
+After bootstrap, manage everything with chezmoi directly:
+
+```sh
+chezmoi diff             # preview pending changes
+chezmoi apply            # apply changes
+chezmoi edit ~/.bashrc   # edit the source file
+chezmoi update           # git pull + apply
+chezmoi managed          # list everything chezmoi controls
+```
+
+To uninstall a single file: `chezmoi forget <target>` then delete the file
+yourself. To uninstall everything: `chezmoi purge`.
 
 ## Layout
 
-| Path           | What it provides                                                  |
-|----------------|-------------------------------------------------------------------|
-| `bash/`        | `bashrc`, `bash_profile`, exports, aliases, functions, `inputrc`  |
-| `git/`         | `gitconfig`, `gitignore` (global), `gitattributes`, `gitk`        |
-| `vim/`         | `vimrc`, `init.vim`, plugin submodules (pathogen-style)           |
-| `tmux/`        | `tmux.conf`                                                        |
-| `ssh/`         | `config` (per-host overrides; keys are git-ignored)               |
-| `htop/`        | `htoprc`                                                           |
-| `curl/wget/`   | rcfiles                                                            |
-| `claude/`      | Claude Code config — agents, hooks, skills, settings              |
-| `extra_bins/`  | Personal scripts dropped into `~/extra_bins` and added to `PATH`  |
-| `shell/misc/`  | Small dotfiles like `hushlogin`, `urlview`                        |
+| Source path                                | What it produces                              |
+|--------------------------------------------|-----------------------------------------------|
+| `home/dot_bashrc`, `dot_bash_*`, …         | Real files at `~/.bashrc`, `~/.bash_*`, etc.  |
+| `home/dot_gitconfig`, `dot_git*`           | `~/.gitconfig` etc.                           |
+| `home/dot_tmux.conf`, `dot_curlrc`, …      | One file per name.                            |
+| `home/symlink_dot_claude.tmpl`             | `~/.claude` → `<repo>/claude` (symlink)       |
+| `home/symlink_dot_ssh.tmpl`                | `~/.ssh` → `<repo>/ssh` (symlink)             |
+| `home/symlink_dot_vim.tmpl`                | `~/.vim` → `<repo>/vim/vim_folder` (symlink)  |
+| `home/symlink_extra_bins.tmpl`             | `~/extra_bins` → `<repo>/extra_bins`          |
+| `home/.chezmoiscripts/run_once_after_*`    | Locale, mac-bash, vim-plug, optional pkgs.    |
+| `claude/`, `ssh/`, `vim/`, `extra_bins/`   | Live targets of the symlinks above.           |
+
+`.chezmoiroot` makes chezmoi treat `home/` as the source dir while keeping the
+working tree at the repo root, so the symlink templates can reach `claude/`,
+`ssh/`, etc. via `{{ .chezmoi.workingTree }}`.
 
 ## Per-host overrides
 
@@ -48,11 +60,11 @@ path_add "$HOME/work-tools/bin" before
 
 ## Quality gates
 
-- **`./install`** — symlink everything; idempotent.
+- **`./install`** — bootstrap chezmoi and apply.
+- **`chezmoi diff`** — preview before apply.
 - **`./run-shellcheck.sh`** — shellchecks every `#!/usr/bin/env bash` script.
-- **`pre-commit run --all-files`** — runs detect-secrets, gitleaks,
-  shellcheck, trailing-whitespace, large-file checks, etc. (See
-  `.pre-commit-config.yaml`.)
+- **`pre-commit run --all-files`** — detect-secrets, gitleaks, shellcheck,
+  trailing-whitespace, large-file checks. (See `.pre-commit-config.yaml`.)
 
 To enable pre-commit hooks locally:
 
@@ -67,6 +79,11 @@ After `install`, run `install-optional` (in `extra_bins`) to set up tools
 that aren't worth installing system-wide via apt — currently
 [uv](https://docs.astral.sh/uv/).
 
+The first interactive `chezmoi apply` also prompts whether to install a set
+of useful packages (`ripgrep`, `jq`, `fzf`, …) via apt or Homebrew. Re-run
+`chezmoi state delete-bucket --bucket=scriptState` if you want to be asked
+again.
+
 ## Notable bits
 
 - `bash_functions` ships `path_add` / `path_remove` / `path_clean` for sane
@@ -80,7 +97,18 @@ that aren't worth installing system-wide via apt — currently
 
 ## Adding a new tool
 
-1. Create `<tool>/<configfile>` (no leading dot).
-2. Add `<tool>` to the `dotfile_folders=(...)` list in `install`.
-3. Add the toggle to `.config` if you want install-time gating.
-4. Run `./install` to verify the symlink lands at `~/.<configfile>`.
+For a single file:
+
+1. Drop it at `home/dot_<name>` (chezmoi will manage `~/.<name>`).
+2. `chezmoi diff && chezmoi apply`.
+
+For a whole directory you want to keep editing in-repo (like `claude/`):
+
+1. Put the directory at the repo root.
+2. Add `home/symlink_dot_<name>.tmpl` containing
+   `{{ .chezmoi.workingTree }}/<dir>`.
+3. `chezmoi apply`.
+
+See the [chezmoi reference](https://www.chezmoi.io/reference/source-state-attributes/)
+for the full list of source-state attributes (`private_`, `executable_`,
+`encrypted_`, `run_onchange_`, etc.).

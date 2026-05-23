@@ -1,0 +1,9 @@
+{
+  "id": "3",
+  "subject": "Revision loop (up to 3 iterations)",
+  "description": "Address checker issues until pass or max iterations",
+  "activeForm": "Iterating on revisions",
+  "status": "pending",
+  "blocks": [],
+  "blockedBy": []
+}

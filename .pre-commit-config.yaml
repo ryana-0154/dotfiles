@@ -29,7 +29,7 @@ repos:
       - id: check-merge-conflict
       - id: check-executables-have-shebangs
       - id: check-shebang-scripts-are-executable
-        exclude: ^bash/(bashrc|bash_profile|bash_completion|bash_aliases|bash_functions|bash_exports|inputrc)$
+        exclude: ^home/dot_(bashrc|bash_profile|bash_completion|bash_aliases|bash_functions|bash_exports|claude_exports|inputrc)$
       - id: mixed-line-ending
 
   # Shell script checking (for bash configs, install script, etc.)

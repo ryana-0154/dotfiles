@@ -23,7 +23,7 @@ done < <(
       -not -path '*/vim/submodules/*' \
       -not -path '*/claude/skills/*' \
       -not -path '*/claude/agents/*' \
-      -not -path '*/bash/bash_exports' \
+      -not -path '*/home/dot_bash_exports' \
       -exec grep -Il '^#!/usr/bin/env bash' {} +
 )
 

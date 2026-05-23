@@ -1,0 +1,20 @@
+    at async i0 (/app/apps/web/.next/server/chunks/_0~wew97._.js:368:32111)
+    at async ar (/app/apps/web/.next/server/chunks/_0~wew97._.js:368:38017)
+    at async ad (/app/apps/web/.next/server/chunks/_0~wew97._.js:368:49601)
+    at async af (/app/apps/web/.next/server/chunks/_0~wew97._.js:368:54285)
+    at async rB.do (/app/node_modules/.pnpm/next@16.2.4_@babel+core@7.29.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/compiled/next-server/app-route-turbo.runtime.prod.js:5:20926)
+[auth][details]: {
+[auth][error] CallbackRouteError: Read more at https://errors.authjs.dev#callbackrouteerror
+  "body": {
+    "error": "incorrect_client_credentials",
+    "error_uri": "https://docs.github.com/apps/managing-oauth-apps/troubleshooting-oauth-app-access-token-request-errors/#incorrect-client-credentials"
+    "error_description": "The client_id and/or client_secret passed are incorrect.",
+[auth][cause]: ng: "response" body "access_token" property must be a string
+    at nw (/app/apps/web/.next/server/chunks/_0~wew97._.js:368:5174)
+    at nR (/app/apps/web/.next/server/chunks/_0~wew97._.js:368:7012)
+    at n7 (/app/apps/web/.next/server/chunks/_0~wew97._.js:368:14816)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async im (/app/apps/web/.next/server/chunks/_0~wew97._.js:368:20019)
+  },
+  "provider": "github"
+}

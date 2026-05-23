@@ -1,0 +1,23 @@
+{{- if eq .chezmoi.os "darwin" -}}
+#!/usr/bin/env bash
+# Install a modern bash via Homebrew and make it the login shell.
+set -euo pipefail
+
+if ! command -v brew >/dev/null 2>&1; then
+	echo "skip: brew not installed" >&2
+	exit 0
+fi
+
+brew list bash >/dev/null 2>&1 || brew install bash
+
+brew_bash=/opt/homebrew/bin/bash
+[[ -x $brew_bash ]] || exit 0
+
+if ! grep -qx "$brew_bash" /etc/shells; then
+	echo "$brew_bash" | sudo tee -a /etc/shells >/dev/null
+fi
+
+if [[ "${SHELL:-}" != "$brew_bash" ]]; then
+	sudo chsh -s "$brew_bash" "$USER"
+fi
+{{- end }}

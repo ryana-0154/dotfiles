@@ -1,0 +1,95 @@
+2026-05-02T11:02:22.010747694Z [inf]  Starting Container
+2026-05-02T11:02:22.263453196Z [inf]  > @runspend/web@0.0.0 start /app/apps/web
+2026-05-02T11:02:22.263463273Z [inf]  > next start
+2026-05-02T11:02:22.263470438Z [inf]  
+2026-05-02T11:02:22.263477751Z [inf]  ▲ Next.js 16.2.4
+2026-05-02T11:02:22.263484374Z [inf]  - Local:         http://localhost:8080
+2026-05-02T11:02:22.263491632Z [inf]  - Network:       http://10.255.50.181:8080
+2026-05-02T11:02:22.263498378Z [inf]  ✓ Ready in 140ms
+2026-05-02T11:02:22.263558891Z [inf]  
+2026-05-02T11:02:26.543112107Z [inf]  Starting Container
+2026-05-02T11:02:26.798754271Z [inf]  
+2026-05-02T11:02:26.798757462Z [inf]  > @runspend/ingest@0.0.0 start /app/workers/ingest
+2026-05-02T11:02:26.798760851Z [inf]  > tsx src/index.ts
+2026-05-02T11:02:26.798763677Z [inf]  
+2026-05-02T11:02:26.798766648Z [inf]  ingest worker started
+2026-05-02T11:02:53.583335026Z [inf]  Starting Container
+2026-05-02T11:02:54.228154994Z [inf]  
+2026-05-02T11:02:54.228158101Z [inf]  > @runspend/ingest@0.0.0 start /app/workers/ingest
+2026-05-02T11:02:54.228161277Z [inf]  > tsx src/index.ts
+2026-05-02T11:02:54.228164524Z [inf]  
+2026-05-02T11:02:54.228167907Z [inf]  ingest worker started
+2026-05-02T11:02:57.425193569Z [inf]  Stopping Container
+2026-05-02T11:09:14.593962186Z [inf]  Stopping Container
+2026-05-02T14:22:09.643527385Z [inf]  Starting Container
+2026-05-02T14:22:12.177787644Z [inf]  
+2026-05-02T14:22:12.177792152Z [inf]  > @runspend/ingest@0.0.0 start /app/workers/ingest
+2026-05-02T14:22:12.177802907Z [inf]  > tsx src/index.ts
+2026-05-02T14:22:12.177807934Z [inf]  
+2026-05-02T14:22:12.177812392Z [inf]  ingest worker started
+2026-05-02T14:22:14.296491125Z [inf]  Stopping Container
+2026-05-02T14:25:54.171652678Z [inf]  Starting Container
+2026-05-02T14:25:55.272104834Z [inf]  ▲ Next.js 16.2.4
+2026-05-02T14:25:55.272114809Z [inf]  - Local:         http://localhost:8080
+2026-05-02T14:25:55.272122188Z [inf]  - Network:       http://10.169.168.187:8080
+2026-05-02T14:25:55.272127911Z [inf]  ✓ Ready in 102ms
+2026-05-02T14:25:55.272139349Z [inf]  
+2026-05-02T14:25:55.272144942Z [inf]  > @runspend/web@0.0.0 start /app/apps/web
+2026-05-02T14:25:55.272149688Z [inf]  > next start
+2026-05-02T14:25:55.272154460Z [inf]  
+2026-05-02T14:26:00.534346533Z [inf]  Stopping Container
+2026-05-02T14:26:05.787477573Z [inf]  /app/apps/web:
+2026-05-02T14:26:05.787484095Z [inf]   ERR_PNPM_RECURSIVE_RUN_FIRST_FAIL  @runspend/web@0.0.0 start: `next start`
+2026-05-02T14:26:05.787489904Z [inf]  Command failed with signal "SIGTERM"
+2026-05-02T15:32:23.230027116Z [inf]  Starting Container
+2026-05-02T15:32:23.604299119Z [inf]  ingest worker started
+2026-05-02T15:32:23.604355611Z [inf]  
+2026-05-02T15:32:23.604359581Z [inf]  > @runspend/ingest@0.0.0 start /app/workers/ingest
+2026-05-02T15:32:23.604364936Z [inf]  > tsx src/index.ts
+2026-05-02T15:32:23.604370901Z [inf]  
+2026-05-02T15:32:27.075849340Z [inf]  Stopping Container
+2026-05-02T15:37:43.243101270Z [inf]  Starting Container
+2026-05-02T15:37:44.391158499Z [inf]   ERR_PNPM_RECURSIVE_EXEC_FIRST_FAIL  Command failed with exit code 1: node scripts/migrate.mjs
+2026-05-02T15:37:44.391232529Z [err]  [migrate] DATABASE_URL is required
+2026-05-02T15:37:44.391235819Z [inf]  undefined
+2026-05-02T15:37:44.391271428Z [inf]  /app/packages/db:
+2026-05-02T15:37:44.391282918Z [inf]   ERR_PNPM_RECURSIVE_EXEC_FIRST_FAIL  Command failed with exit code 1: node scripts/migrate.mjs
+2026-05-02T15:37:44.391288018Z [err]  [migrate] DATABASE_URL is required
+2026-05-02T15:37:44.391291548Z [inf]  undefined
+2026-05-02T15:37:44.391295658Z [inf]  /app/packages/db:
+2026-05-02T15:37:45.428549420Z [err]  [migrate] DATABASE_URL is required
+2026-05-02T15:37:45.428552540Z [inf]  undefined
+2026-05-02T15:37:45.428555720Z [inf]  /app/packages/db:
+2026-05-02T15:37:45.428558380Z [inf]   ERR_PNPM_RECURSIVE_EXEC_FIRST_FAIL  Command failed with exit code 1: node scripts/migrate.mjs
+2026-05-02T15:37:46.404134984Z [err]  [migrate] DATABASE_URL is required
+2026-05-02T15:37:46.404141134Z [inf]  undefined
+2026-05-02T15:37:46.404148994Z [inf]  /app/packages/db:
+2026-05-02T15:37:46.404156944Z [inf]   ERR_PNPM_RECURSIVE_EXEC_FIRST_FAIL  Command failed with exit code 1: node scripts/migrate.mjs
+2026-05-02T15:37:47.455170973Z [err]  [migrate] DATABASE_URL is required
+2026-05-02T15:37:47.455173123Z [inf]  undefined
+2026-05-02T15:37:47.455175743Z [inf]  /app/packages/db:
+2026-05-02T15:37:47.455178233Z [inf]   ERR_PNPM_RECURSIVE_EXEC_FIRST_FAIL  Command failed with exit code 1: node scripts/migrate.mjs
+2026-05-02T15:37:48.494812635Z [err]  [migrate] DATABASE_URL is required
+2026-05-02T15:37:48.514770861Z [inf]  undefined
+2026-05-02T15:37:48.514773901Z [inf]  /app/packages/db:
+2026-05-02T15:37:48.514776721Z [inf]   ERR_PNPM_RECURSIVE_EXEC_FIRST_FAIL  Command failed with exit code 1: node scripts/migrate.mjs
+2026-05-02T15:37:49.577502047Z [err]  [migrate] DATABASE_URL is required
+2026-05-02T15:37:49.599395404Z [inf]  undefined
+2026-05-02T15:37:49.599398284Z [inf]  /app/packages/db:
+2026-05-02T15:37:49.599401164Z [inf]   ERR_PNPM_RECURSIVE_EXEC_FIRST_FAIL  Command failed with exit code 1: node scripts/migrate.mjs
+2026-05-02T15:37:50.648372686Z [err]  [migrate] DATABASE_URL is required
+2026-05-02T15:37:50.650025789Z [inf]  undefined
+2026-05-02T15:37:50.650035389Z [inf]  /app/packages/db:
+2026-05-02T15:37:50.650042309Z [inf]   ERR_PNPM_RECURSIVE_EXEC_FIRST_FAIL  Command failed with exit code 1: node scripts/migrate.mjs
+2026-05-02T15:37:51.646854481Z [err]  [migrate] DATABASE_URL is required
+2026-05-02T15:37:51.660484778Z [inf]  undefined
+2026-05-02T15:37:51.660489648Z [inf]  /app/packages/db:
+2026-05-02T15:37:51.660493568Z [inf]   ERR_PNPM_RECURSIVE_EXEC_FIRST_FAIL  Command failed with exit code 1: node scripts/migrate.mjs
+2026-05-02T15:37:52.726134769Z [err]  [migrate] DATABASE_URL is required
+2026-05-02T15:37:52.742913235Z [inf]  undefined
+2026-05-02T15:37:52.742924355Z [inf]  /app/packages/db:
+2026-05-02T15:37:52.742928885Z [inf]   ERR_PNPM_RECURSIVE_EXEC_FIRST_FAIL  Command failed with exit code 1: node scripts/migrate.mjs
+2026-05-02T15:37:53.816453371Z [err]  [migrate] DATABASE_URL is required
+2026-05-02T15:37:53.835254767Z [inf]  undefined
+2026-05-02T15:37:53.835262907Z [inf]  /app/packages/db:
+2026-05-02T15:37:53.835266787Z [inf]   ERR_PNPM_RECURSIVE_EXEC_FIRST_FAIL  Command failed with exit code 1: node scripts/migrate.mjs

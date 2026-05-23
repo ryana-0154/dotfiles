@@ -1,0 +1,9 @@
+{
+  "id": "4",
+  "subject": "Verify requirements coverage and record planning completion",
+  "description": "Run requirements coverage gate; commit plans; update STATE.md via gsd-sdk",
+  "activeForm": "Recording planning completion",
+  "status": "pending",
+  "blocks": [],
+  "blockedBy": []
+}

@@ -1,0 +1,10 @@
+[auth][error] UntrustedHost: Host must be trusted. URL was: https://runspendweb-stg.up.railway.app/api/auth/session. Read more at https://errors.authjs.dev#untrustedhost
+    at /app/apps/web/.next/server/chunks/ssr/_109a6_u._.js:404:51878
+    at fi (/app/apps/web/.next/server/chunks/ssr/_109a6_u._.js:404:54543)
+    at async o (/app/apps/web/.next/server/chunks/ssr/_109a6_u._.js:404:59910)
+    at async f (/app/apps/web/.next/server/chunks/ssr/[root-of-the-server]__0tkz_j.._.js:1:12538)
+    at async rP (/app/node_modules/.pnpm/next@16.2.4_@babel+core@7.29.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/compiled/next-server/app-page-turbo.runtime.prod.js:16:2271)
+    at async /app/node_modules/.pnpm/next@16.2.4_@babel+core@7.29.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/compiled/next-server/app-page-turbo.runtime.prod.js:16:671
+    at async rx (/app/node_modules/.pnpm/next@16.2.4_@babel+core@7.29.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/compiled/next-server/app-page-turbo.runtime.prod.js:14:14435)
+    at async lP (/app/node_modules/.pnpm/next@16.2.4_@babel+core@7.29.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/compiled/next-server/app-page-turbo.runtime.prod.js:51:28238)
+    at async o (/app/apps/web/.next/server/chunks/ssr/05w9_next_dist_esm_build_templates_app-page_0zzwxvb.js:1:11019)

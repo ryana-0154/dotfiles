@@ -1,0 +1,9 @@
+{
+  "id": "2",
+  "subject": "Run gsd-plan-checker on generated plans",
+  "description": "Verify plans pass goal-backward + requirements coverage + a11y + security threat model gates",
+  "activeForm": "Verifying plans",
+  "status": "pending",
+  "blocks": [],
+  "blockedBy": []
+}

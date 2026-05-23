@@ -1,0 +1,792 @@
+2026-05-02T15:31:17.033361087Z [inf]  [snapshot] received sha256:25f38f90e80022e1099fac45c1e5f53bcad13e5bb497922159e3a51be2b5ca69 md5:146f9e8c8e167b6894c9bd4a1fd64e07
+2026-05-02T15:31:17.033422208Z [inf]  receiving snapshot
+2026-05-02T15:31:17.040817048Z [dbg]  config-as-code path set as '/apps/web/railway.json'
+2026-05-02T15:31:17.040822957Z [dbg]  skipping 'nixpacks.toml' at 'apps/web/nixpacks.toml' as it is not rooted at a valid path (root_dir=, fileOpts={acceptChildOfRepoRoot:false})
+2026-05-02T15:31:17.040826712Z [dbg]  found config-as-code file at 'apps/web/railway.json'
+2026-05-02T15:31:17.040828745Z [dbg]  skipping 'nixpacks.toml' at 'workers/ingest/nixpacks.toml' as it is not rooted at a valid path (root_dir=, fileOpts={acceptChildOfRepoRoot:false})
+2026-05-02T15:31:17.040830608Z [dbg]  skipping 'railway.json' at 'workers/ingest/railway.json' as it is not rooted at a valid path (root_dir=, fileOpts={acceptChildOfRepoRoot:true})
+2026-05-02T15:31:17.040832210Z [inf]  config-as-code path sanitized to 'apps/web/railway.json'
+2026-05-02T15:31:17.040883818Z [inf]  analyzing snapshot
+2026-05-02T15:31:17.710080952Z [inf]  scheduling build on Metal builder "builder-mjwvwg"
+2026-05-02T15:31:18.097475914Z [inf]  uploading snapshot
+2026-05-02T15:31:18.126607139Z [inf]  unpacking archive
+2026-05-02T15:31:18.800855416Z [inf]  using build driver nixpacks-v1.41.0
+2026-05-02T15:31:19.536878479Z [inf]  
+2026-05-02T15:31:19.536908244Z [inf]  ╔══════════════════════════════ Nixpacks v1.41.0 ══════════════════════════════╗
+2026-05-02T15:31:19.536912310Z [inf]  ║ setup      │ nodejs_22                                                       ║
+2026-05-02T15:31:19.536915405Z [inf]  ║──────────────────────────────────────────────────────────────────────────────║
+2026-05-02T15:31:19.536916927Z [inf]  ║ install    │ corepack enable                                                 ║
+2026-05-02T15:31:19.536917838Z [inf]  ║            │ corepack prepare --activate                                     ║
+2026-05-02T15:31:19.536918459Z [inf]  ║            │ pnpm install --frozen-lockfile                                  ║
+2026-05-02T15:31:19.536919060Z [inf]  ║──────────────────────────────────────────────────────────────────────────────║
+2026-05-02T15:31:19.536920002Z [inf]  ║ build      │ pnpm --filter @runspend/web build                               ║
+2026-05-02T15:31:19.536920552Z [inf]  ║──────────────────────────────────────────────────────────────────────────────║
+2026-05-02T15:31:19.536921424Z [inf]  ║ start      │ pnpm --filter @runspend/db exec node scripts/migrate.mjs &&     ║
+2026-05-02T15:31:19.536921905Z [inf]  ║            │ pnpm --filter @runspend/web exec next start                     ║
+2026-05-02T15:31:19.536922525Z [inf]  ╚══════════════════════════════════════════════════════════════════════════════╝
+2026-05-02T15:31:19.536923557Z [inf]  
+2026-05-02T15:31:19.537756666Z [inf]  
+2026-05-02T15:31:19.537772961Z [inf]  Saved output to:
+2026-05-02T15:31:19.537774984Z [inf]    snapshot-target-unpack
+2026-05-02T15:31:20.226136414Z [inf]  [internal] load build definition from Dockerfile
+2026-05-02T15:31:20.226233029Z [inf]  [internal] load build definition from Dockerfile
+2026-05-02T15:31:20.226366730Z [inf]  [internal] load build definition from Dockerfile
+2026-05-02T15:31:20.348303285Z [inf]  [internal] load build definition from Dockerfile
+2026-05-02T15:31:20.374834010Z [inf]  [internal] load metadata for ghcr.io/railwayapp/nixpacks:ubuntu-1745885067
+2026-05-02T15:31:20.684622266Z [inf]  [internal] load metadata for ghcr.io/railwayapp/nixpacks:ubuntu-1745885067
+2026-05-02T15:31:20.685090959Z [inf]  [internal] load .dockerignore
+2026-05-02T15:31:20.685106762Z [inf]  [internal] load .dockerignore
+2026-05-02T15:31:20.685120002Z [inf]  [internal] load .dockerignore
+2026-05-02T15:31:20.685196347Z [inf]  [internal] load .dockerignore
+2026-05-02T15:31:20.772510112Z [inf]  [internal] load .dockerignore
+2026-05-02T15:31:20.799343491Z [wrn]  UndefinedVar: Usage of undefined variable '$NIXPACKS_PATH' (line 18)(https://docs.docker.com/go/dockerfile/rule/undefined-var/)
+ details: Variables should be defined before their use
+
+2026-05-02T15:31:20.804384060Z [inf]  [stage-0 11/12] RUN printf '\nPATH=/app/node_modules/.bin:$PATH' >> /root/.profile
+2026-05-02T15:31:20.804397510Z [inf]  [stage-0 10/12] RUN --mount=type=cache,id=s/84c65009-d3f5-41de-92ca-ea747e35de14-apps/web/next/cache,target=/app/apps/web/.next/cache --mount=type=cache,id=s/84c65009-d3f5-41de-92ca-ea747e35de14-node_modules/cache,target=/app/node_modules/.cache pnpm --filter @runspend/web build
+2026-05-02T15:31:20.804398601Z [inf]  [stage-0  9/12] COPY . /app/.
+2026-05-02T15:31:20.804399172Z [inf]  [stage-0  8/12] RUN --mount=type=cache,id=s/84c65009-d3f5-41de-92ca-ea747e35de14-/root/local/share/pnpm/store/v3,target=/root/.local/share/pnpm/store/v3 pnpm install --frozen-lockfile
+2026-05-02T15:31:20.804399703Z [inf]  [stage-0  7/12] RUN --mount=type=cache,id=s/84c65009-d3f5-41de-92ca-ea747e35de14-/root/local/share/pnpm/store/v3,target=/root/.local/share/pnpm/store/v3 corepack prepare --activate
+2026-05-02T15:31:20.804400284Z [inf]  [stage-0  1/12] FROM ghcr.io/railwayapp/nixpacks:ubuntu-1745885067@sha256:d45c89d80e13d7ad0fd555b5130f22a866d9dd10e861f589932303ef2314c7de
+2026-05-02T15:31:20.804400915Z [inf]  [stage-0  5/12] COPY . /app/.
+2026-05-02T15:31:20.804401215Z [inf]  [stage-0  4/12] RUN nix-env -if .nixpacks/nixpkgs-23f9169c4ccce521379e602cc82ed873a1f1b52b.nix && nix-collect-garbage -d
+2026-05-02T15:31:20.804401686Z [inf]  [stage-0  3/12] COPY .nixpacks/nixpkgs-23f9169c4ccce521379e602cc82ed873a1f1b52b.nix .nixpacks/nixpkgs-23f9169c4ccce521379e602cc82ed873a1f1b52b.nix
+2026-05-02T15:31:20.804402387Z [inf]  [internal] load build context
+2026-05-02T15:31:20.804403148Z [inf]  [stage-0  2/12] WORKDIR /app/
+2026-05-02T15:31:20.804403679Z [inf]  [stage-0 12/12] COPY . /app
+2026-05-02T15:31:20.804404110Z [inf]  [stage-0  6/12] RUN --mount=type=cache,id=s/84c65009-d3f5-41de-92ca-ea747e35de14-/root/local/share/pnpm/store/v3,target=/root/.local/share/pnpm/store/v3 corepack enable
+2026-05-02T15:31:20.804631060Z [inf]  [internal] load build context
+2026-05-02T15:31:20.804692562Z [inf]  [stage-0  1/12] FROM ghcr.io/railwayapp/nixpacks:ubuntu-1745885067@sha256:d45c89d80e13d7ad0fd555b5130f22a866d9dd10e861f589932303ef2314c7de
+2026-05-02T15:31:20.804950759Z [inf]  [internal] load build context
+2026-05-02T15:31:20.816420699Z [inf]  [stage-0  1/12] FROM ghcr.io/railwayapp/nixpacks:ubuntu-1745885067@sha256:d45c89d80e13d7ad0fd555b5130f22a866d9dd10e861f589932303ef2314c7de
+2026-05-02T15:31:20.922859544Z [inf]  [internal] load build context
+2026-05-02T15:31:20.945204082Z [inf]  [stage-0  2/12] WORKDIR /app/
+2026-05-02T15:31:20.945207617Z [inf]  [stage-0  3/12] COPY .nixpacks/nixpkgs-23f9169c4ccce521379e602cc82ed873a1f1b52b.nix .nixpacks/nixpkgs-23f9169c4ccce521379e602cc82ed873a1f1b52b.nix
+2026-05-02T15:31:21.130495493Z [inf]  [stage-0  3/12] COPY .nixpacks/nixpkgs-23f9169c4ccce521379e602cc82ed873a1f1b52b.nix .nixpacks/nixpkgs-23f9169c4ccce521379e602cc82ed873a1f1b52b.nix
+2026-05-02T15:31:21.152897016Z [inf]  [stage-0  4/12] RUN nix-env -if .nixpacks/nixpkgs-23f9169c4ccce521379e602cc82ed873a1f1b52b.nix && nix-collect-garbage -d
+2026-05-02T15:31:21.658018362Z [inf]  unpacking 'https://github.com/NixOS/nixpkgs/archive/23f9169c4ccce521379e602cc82ed873a1f1b52b.tar.gz' into the Git cache...
+
+2026-05-02T15:31:53.870297752Z [inf]  unpacking 'https://github.com/railwayapp/nix-npm-overlay/archive/main.tar.gz' into the Git cache...
+
+2026-05-02T15:31:54.376975271Z [inf]  installing '23f9169c4ccce521379e602cc82ed873a1f1b52b-env'
+
+2026-05-02T15:31:55.145780715Z [inf]  these 3 derivations will be built:
+  /nix/store/l53bwr725gp7k4831cygqrihvaxv36b9-libraries.drv
+  /nix/store/93ik6f5038k47a4d72i9r9fjl15fvr3f-23f9169c4ccce521379e602cc82ed873a1f1b52b-env.drv
+  /nix/store/dvqhf8503ahhs9w4yplf88dga3zklqzf-23f9169c4ccce521379e602cc82ed873a1f1b52b-env.drv
+
+2026-05-02T15:31:55.145819002Z [inf]  these 50 paths will be fetched (57.90 MiB download, 292.01 MiB unpacked):
+  /nix/store/jj3knbpiiwbwmplin208h775gzm86rc3-acl-2.3.2
+  /nix/store/2mwbf3viqfqd3lr946slqby9y4k7d9lw-attr-2.5.2
+  /nix/store/cl2gkgnh26mmpka81pc2g5bzjfrili92-bash-5.3p3
+  /nix/store/2j7r5np0vaz4cnqkymp1mqivmjj1x9xl-bash-interactive-5.3p3
+  /nix/store/1dw13nzqf9v8w7jcy205hkp7s7ggi0cc-builder.pl
+  /nix/store/j59qq0cqb364kzzrx2r32swfljwklxlq-bzip2-1.0.8
+  /nix/store/xnd0ld68fzj1g1qr19gg0va486snwj22-bzip2-1.0.8-bin
+  /nix/store/00bc157nm93q5fjz551fwk60ihlbilvj-coreutils-9.7
+
+2026-05-02T15:31:55.145825372Z [inf]    /nix/store/c7qlkpbivy2znqxd25prgh9pwjxdri6w-diffutils-3.12
+  /nix/store/wgvx9p6h00aijb9jw95am7095wjzm9mv-ed-1.22.2
+
+2026-05-02T15:31:55.145829969Z [inf]    /nix/store/5qm0vivgc7lmiyfbf5d5a55s40d996bd-file-5.45
+  /nix/store/wq1cxh4s8rz8vs4ssp2z49v96m0nhxhj-findutils-4.10.0
+
+2026-05-02T15:31:55.145833845Z [inf]    /nix/store/swbmnc2s8g2zxzxh62hx1vbbcg6i2r5b-gawk-5.3.2
+
+2026-05-02T15:31:55.145842037Z [inf]    /nix/store/xp989kyfg52803fmkzbz5py35jphcpgd-gcc-14.3.0-lib
+  /nix/store/8b9srwwmrwmh1yl613cwwj7gydl87br6-gcc-14.3.0-libgcc
+
+2026-05-02T15:31:55.145846434Z [inf]    /nix/store/qhw0sp183mqd04x5jp75981kwya64npv-glibc-2.40-66
+
+2026-05-02T15:31:55.145924691Z [inf]    /nix/store/78xkc7z5m21chq7p6awrzgznz83xyml0-gmp-with-cxx-6.3.0
+  /nix/store/2j08vib6rf81vwi6mv3s544wi8rj3xn7-gnu-config-2024-01-01
+  /nix/store/6q57mnfak3q8ss656qgp245qzqvnniyr-gnugrep-3.12
+  /nix/store/lmn1m0giq5bkgdqvdpiryb9a2ly28w6g-gnumake-4.4.1
+  /nix/store/7zy6jnnpqh16b18j6ar289vhwp17msh0-gnused-4.9
+  /nix/store/n09s57l86zxyjydkxagawxpkhh3d3dlh-gnutar-1.35
+  /nix/store/wd4i398mh329vhw93mvmamw3hrnhl257-gzip-1.14
+  /nix/store/hpyfq2n0qr4qj3z1f7d2diw8sql5m84f-icu4c-76.1
+  /nix/store/zc7w3ii28j4kagmlznjdajf0nzd0z60a-icu4c-76.1-dev
+  /nix/store/wwqyxsvmg41q5ckfvvv6wa50nwvz9dv4-libidn2-2.3.8
+  /nix/store/7ndy5820h69n1pgd13viph1qjq6zhhkj-libunistring-1.3
+  /nix/store/2pi0ddhdi6m4fnxw9w42qksz9jk1ja1i-libuv-1.51.0
+  /nix/store/adklcnjpc31n6jabha2qd60y2s9wm133-libuv-1.51.0-dev
+  /nix/store/nkn950vf2i29k4v3z6w9717pjrg483ng-libxcrypt-4.4.38
+  /nix/store/lm4wm3f4ynilxw8yvgqq0hj2ng8ky9xy-ncurses-6.5
+  /nix/store/cwxxy2is6hb4dcqsx8rhnvwic3hfzpcd-nodejs-22.19.0
+
+2026-05-02T15:31:55.145932513Z [inf]    /nix/store/0837wpkjb27cr70bi3pc4g2rw5v9r63l-openssl-3.5.2
+  /nix/store/3kasb92ri5cmp7gwxgj8jgk87pr83y7p-openssl-3.5.2-bin
+
+2026-05-02T15:31:55.14593695Z [inf]    /nix/store/cz9k6nhxjppa1kmyf5npd0g8l89xzilw-openssl-3.5.2-dev
+
+2026-05-02T15:31:55.145943449Z [inf]    /nix/store/r9lif1a0naanr8kdapwnbnr39lr7d56a-patch-2.8
+
+2026-05-02T15:31:55.145948407Z [inf]    /nix/store/0032synbfqd0ylgf9szgp724nmw2fq89-patchelf-0.15.2
+  /nix/store/wqlkv0cjacnm7arca156p3d3vh0kdbmk-pcre2-10.46
+
+2026-05-02T15:31:55.145998191Z [inf]    /nix/store/k2y9xpcdqxma66kag80nhbv0pq2bznzf-perl-5.40.0
+  /nix/store/zqkjn730gir222v3mkp82c1pmqfb2j0l-readline-8.3p1
+  /nix/store/jqrf546vxc6nzf4575m4am3w4ywq765i-sqlite-3.50.4
+  /nix/store/7p5yg8li32wgxxsydbzblnjgs8hvl9wd-sqlite-3.50.4-bin
+
+2026-05-02T15:31:55.14602419Z [inf]    /nix/store/3a7y8k7fh6xldnpvd3bx3ygnx5044xw6-sqlite-3.50.4-dev
+  /nix/store/x1d0ad98h92lp5g59pfryjzk4ca84i3r-stdenv-linux
+  /nix/store/ka03rs4a3bybjhqpvg388sdszbybvbff-update-autotools-gnu-config-scripts-hook
+  /nix/store/0ja5daq2yay3svg6f48spyfby7pgy5bm-xgcc-14.3.0-libgcc
+  /nix/store/swqs30pymm3ymv2qnkzs353xmpgr80jr-xz-5.8.1
+  /nix/store/77jyjqy2b9l2a0139im9ds28zkdv0ybc-xz-5.8.1-bin
+  /nix/store/6qi8skh85ci2k9gvl27nnh3kiy32qnsz-zlib-1.3.1
+  /nix/store/6fqij3sy1mlsnq1n679bzbl5bkqs7yvk-zlib-1.3.1-dev
+
+2026-05-02T15:31:55.156385738Z [inf]  copying path '/nix/store/1dw13nzqf9v8w7jcy205hkp7s7ggi0cc-builder.pl' from 'https://cache.nixos.org'...
+
+2026-05-02T15:31:55.164141399Z [inf]  copying path '/nix/store/8b9srwwmrwmh1yl613cwwj7gydl87br6-gcc-14.3.0-libgcc' from 'https://cache.nixos.org'...
+
+2026-05-02T15:31:55.164266496Z [inf]  copying path '/nix/store/2j08vib6rf81vwi6mv3s544wi8rj3xn7-gnu-config-2024-01-01' from 'https://cache.nixos.org'...
+
+2026-05-02T15:31:55.164676391Z [inf]  copying path '/nix/store/7ndy5820h69n1pgd13viph1qjq6zhhkj-libunistring-1.3' from 'https://cache.nixos.org'...
+
+2026-05-02T15:31:55.170556919Z [inf]  copying path '/nix/store/ka03rs4a3bybjhqpvg388sdszbybvbff-update-autotools-gnu-config-scripts-hook' from 'https://cache.nixos.org'...
+
+2026-05-02T15:31:55.924888278Z [inf]  copying path '/nix/store/2mwbf3viqfqd3lr946slqby9y4k7d9lw-attr-2.5.2' from 'https://cache.nixos.org'...
+copying path '/nix/store/cl2gkgnh26mmpka81pc2g5bzjfrili92-bash-5.3p3' from 'https://cache.nixos.org'...
+copying path '/nix/store/j59qq0cqb364kzzrx2r32swfljwklxlq-bzip2-1.0.8' from 'https://cache.nixos.org'...
+copying path '/nix/store/swbmnc2s8g2zxzxh62hx1vbbcg6i2r5b-gawk-5.3.2' from 'https://cache.nixos.org'...
+copying path '/nix/store/2pi0ddhdi6m4fnxw9w42qksz9jk1ja1i-libuv-1.51.0' from 'https://cache.nixos.org'...
+copying path '/nix/store/0837wpkjb27cr70bi3pc4g2rw5v9r63l-openssl-3.5.2' from 'https://cache.nixos.org'...
+copying path '/nix/store/xp989kyfg52803fmkzbz5py35jphcpgd-gcc-14.3.0-lib' from 'https://cache.nixos.org'...
+copying path '/nix/store/7zy6jnnpqh16b18j6ar289vhwp17msh0-gnused-4.9' from 'https://cache.nixos.org'...
+
+2026-05-02T15:31:55.925107286Z [inf]  copying path '/nix/store/swqs30pymm3ymv2qnkzs353xmpgr80jr-xz-5.8.1' from 'https://cache.nixos.org'...
+
+2026-05-02T15:31:55.926235438Z [inf]  copying path '/nix/store/lmn1m0giq5bkgdqvdpiryb9a2ly28w6g-gnumake-4.4.1' from 'https://cache.nixos.org'...
+
+2026-05-02T15:31:55.92701002Z [inf]  copying path '/nix/store/wgvx9p6h00aijb9jw95am7095wjzm9mv-ed-1.22.2' from 'https://cache.nixos.org'...
+
+2026-05-02T15:31:55.927072423Z [inf]  copying path '/nix/store/nkn950vf2i29k4v3z6w9717pjrg483ng-libxcrypt-4.4.38' from 'https://cache.nixos.org'...
+
+2026-05-02T15:31:55.927089789Z [inf]  copying path '/nix/store/lm4wm3f4ynilxw8yvgqq0hj2ng8ky9xy-ncurses-6.5' from 'https://cache.nixos.org'...
+copying path '/nix/store/6qi8skh85ci2k9gvl27nnh3kiy32qnsz-zlib-1.3.1' from 'https://cache.nixos.org'...
+
+2026-05-02T15:31:55.92720369Z [inf]  copying path '/nix/store/wqlkv0cjacnm7arca156p3d3vh0kdbmk-pcre2-10.46' from 'https://cache.nixos.org'...
+
+2026-05-02T15:31:56.02463039Z [inf]  copying path '/nix/store/jj3knbpiiwbwmplin208h775gzm86rc3-acl-2.3.2' from 'https://cache.nixos.org'...
+
+2026-05-02T15:31:56.031015315Z [inf]  copying path '/nix/store/r9lif1a0naanr8kdapwnbnr39lr7d56a-patch-2.8' from 'https://cache.nixos.org'...
+
+2026-05-02T15:31:56.036731297Z [inf]  copying path '/nix/store/adklcnjpc31n6jabha2qd60y2s9wm133-libuv-1.51.0-dev' from 'https://cache.nixos.org'...
+
+2026-05-02T15:31:56.071883811Z [inf]  copying path '/nix/store/77jyjqy2b9l2a0139im9ds28zkdv0ybc-xz-5.8.1-bin' from 'https://cache.nixos.org'...
+
+2026-05-02T15:31:56.075021517Z [inf]  copying path '/nix/store/6q57mnfak3q8ss656qgp245qzqvnniyr-gnugrep-3.12' from 'https://cache.nixos.org'...
+
+2026-05-02T15:31:56.081813732Z [inf]  copying path '/nix/store/wd4i398mh329vhw93mvmamw3hrnhl257-gzip-1.14' from 'https://cache.nixos.org'...
+
+2026-05-02T15:31:56.106407052Z [inf]  copying path '/nix/store/3a7y8k7fh6xldnpvd3bx3ygnx5044xw6-sqlite-3.50.4-dev' from 'https://cache.nixos.org'...
+
+2026-05-02T15:31:56.14654365Z [inf]  copying path '/nix/store/78xkc7z5m21chq7p6awrzgznz83xyml0-gmp-with-cxx-6.3.0' from 'https://cache.nixos.org'...
+copying path '/nix/store/0032synbfqd0ylgf9szgp724nmw2fq89-patchelf-0.15.2' from 'https://cache.nixos.org'...
+
+2026-05-02T15:31:56.149847044Z [inf]  copying path '/nix/store/hpyfq2n0qr4qj3z1f7d2diw8sql5m84f-icu4c-76.1' from 'https://cache.nixos.org'...
+
+2026-05-02T15:31:56.163009873Z [inf]  copying path '/nix/store/3kasb92ri5cmp7gwxgj8jgk87pr83y7p-openssl-3.5.2-bin' from 'https://cache.nixos.org'...
+
+2026-05-02T15:31:56.165122511Z [inf]  copying path '/nix/store/00bc157nm93q5fjz551fwk60ihlbilvj-coreutils-9.7' from 'https://cache.nixos.org'...
+
+2026-05-02T15:31:56.187584605Z [inf]  copying path '/nix/store/cz9k6nhxjppa1kmyf5npd0g8l89xzilw-openssl-3.5.2-dev' from 'https://cache.nixos.org'...
+
+2026-05-02T15:31:56.210191326Z [inf]  copying path '/nix/store/c7qlkpbivy2znqxd25prgh9pwjxdri6w-diffutils-3.12' from 'https://cache.nixos.org'...
+copying path '/nix/store/wq1cxh4s8rz8vs4ssp2z49v96m0nhxhj-findutils-4.10.0' from 'https://cache.nixos.org'...
+
+2026-05-02T15:31:56.210363584Z [inf]  copying path '/nix/store/k2y9xpcdqxma66kag80nhbv0pq2bznzf-perl-5.40.0' from 'https://cache.nixos.org'...
+
+2026-05-02T15:31:56.253734833Z [inf]  copying path '/nix/store/x1d0ad98h92lp5g59pfryjzk4ca84i3r-stdenv-linux' from 'https://cache.nixos.org'...
+
+2026-05-02T15:31:56.617378971Z [inf]  building '/nix/store/93ik6f5038k47a4d72i9r9fjl15fvr3f-23f9169c4ccce521379e602cc82ed873a1f1b52b-env.drv'...
+
+2026-05-02T15:31:56.626599888Z [inf]  copying path '/nix/store/zqkjn730gir222v3mkp82c1pmqfb2j0l-readline-8.3p1' from 'https://cache.nixos.org'...
+
+2026-05-02T15:31:56.753018635Z [inf]  copying path '/nix/store/zc7w3ii28j4kagmlznjdajf0nzd0z60a-icu4c-76.1-dev' from 'https://cache.nixos.org'...
+
+2026-05-02T15:31:58.39202229Z [inf]  building '/nix/store/dvqhf8503ahhs9w4yplf88dga3zklqzf-23f9169c4ccce521379e602cc82ed873a1f1b52b-env.drv'...
+
+2026-05-02T15:31:58.475533163Z [inf]  created 5 symlinks in user environment
+
+2026-05-02T15:31:58.693706243Z [inf]  building '/nix/store/5952ap5di27j39c61fx7hwcpd6w4a25y-user-environment.drv'...
+
+2026-05-02T15:31:59.422536621Z [inf]  removing old generations of profile /nix/var/nix/profiles/per-user/root/profile
+removing profile version 1
+
+2026-05-02T15:31:59.428853874Z [inf]  removing stale link from '/nix/var/nix/gcroots/auto/lzjbmb2ry0z7lma2fvpqprb12921pnb5' to '/nix/var/nix/profiles/per-user/root/profile-1-link'
+
+2026-05-02T15:31:59.449053976Z [inf]  deleting '/nix/store/253kwn1730vnay87xkjgxa2v97w3y079-user-environment.drv'
+
+2026-05-02T15:31:59.449148017Z [inf]  deleting '/nix/store/hn5mrh362n52x8wwab9s1v6bgn4n5c94-env-manifest.nix'
+
+2026-05-02T15:31:59.46174006Z [inf]  deleting '/nix/store/x1d0ad98h92lp5g59pfryjzk4ca84i3r-stdenv-linux'
+
+2026-05-02T15:31:59.461936765Z [inf]  deleting '/nix/store/6q57mnfak3q8ss656qgp245qzqvnniyr-gnugrep-3.12'
+
+2026-05-02T15:31:59.498652103Z [inf]  deleting '/nix/store/nkn950vf2i29k4v3z6w9717pjrg483ng-libxcrypt-4.4.38'
+
+2026-05-02T15:31:59.502948455Z [inf]  deleting '/nix/store/r9lif1a0naanr8kdapwnbnr39lr7d56a-patch-2.8'
+
+2026-05-02T15:31:59.503347193Z [inf]  deleting '/nix/store/5qm0vivgc7lmiyfbf5d5a55s40d996bd-file-5.45'
+
+2026-05-02T15:31:59.503816878Z [inf]  deleting '/nix/store/z6gs6c7h492l4zq99mrmbwfwkjykaf0d-source'
+
+2026-05-02T15:32:01.293461884Z [inf]  deleting '/nix/store/wqlkv0cjacnm7arca156p3d3vh0kdbmk-pcre2-10.46'
+
+2026-05-02T15:32:01.294841602Z [inf]  deleting '/nix/store/0032synbfqd0ylgf9szgp724nmw2fq89-patchelf-0.15.2'
+
+2026-05-02T15:32:01.29837411Z [inf]  deleting '/nix/store/n09s57l86zxyjydkxagawxpkhh3d3dlh-gnutar-1.35'
+
+2026-05-02T15:32:01.304127017Z [inf]  deleting '/nix/store/7zy6jnnpqh16b18j6ar289vhwp17msh0-gnused-4.9'
+
+2026-05-02T15:32:01.307625153Z [inf]  deleting unused links...
+
+2026-05-02T15:32:03.910845729Z [inf]  note: currently hard linking saves -0.70 MiB
+
+2026-05-02T15:32:04.011967621Z [inf]  30 store paths deleted, 244.82 MiB freed
+
+2026-05-02T15:32:04.201059561Z [inf]  [stage-0  4/12] RUN nix-env -if .nixpacks/nixpkgs-23f9169c4ccce521379e602cc82ed873a1f1b52b.nix && nix-collect-garbage -d
+2026-05-02T15:32:04.222625171Z [inf]  [stage-0  5/12] COPY . /app/.
+2026-05-02T15:32:04.558544813Z [inf]  [stage-0  5/12] COPY . /app/.
+2026-05-02T15:32:04.583925303Z [inf]  [stage-0  6/12] RUN --mount=type=cache,id=s/84c65009-d3f5-41de-92ca-ea747e35de14-/root/local/share/pnpm/store/v3,target=/root/.local/share/pnpm/store/v3 corepack enable
+2026-05-02T15:32:05.089825818Z [inf]  [stage-0  6/12] RUN --mount=type=cache,id=s/84c65009-d3f5-41de-92ca-ea747e35de14-/root/local/share/pnpm/store/v3,target=/root/.local/share/pnpm/store/v3 corepack enable
+2026-05-02T15:32:05.107379641Z [inf]  [stage-0  7/12] RUN --mount=type=cache,id=s/84c65009-d3f5-41de-92ca-ea747e35de14-/root/local/share/pnpm/store/v3,target=/root/.local/share/pnpm/store/v3 corepack prepare --activate
+2026-05-02T15:32:05.384099177Z [inf]  Preparing pnpm@10.33.0 for immediate activation...
+
+2026-05-02T15:32:06.210591989Z [inf]  [stage-0  7/12] RUN --mount=type=cache,id=s/84c65009-d3f5-41de-92ca-ea747e35de14-/root/local/share/pnpm/store/v3,target=/root/.local/share/pnpm/store/v3 corepack prepare --activate
+2026-05-02T15:32:06.228574094Z [inf]  [stage-0  8/12] RUN --mount=type=cache,id=s/84c65009-d3f5-41de-92ca-ea747e35de14-/root/local/share/pnpm/store/v3,target=/root/.local/share/pnpm/store/v3 pnpm install --frozen-lockfile
+2026-05-02T15:32:06.867119982Z [inf]  Scope: all 7 workspace projects
+
+2026-05-02T15:32:06.946637386Z [inf]  Lockfile is up to date, resolution step is skipped
+
+2026-05-02T15:32:07.057720865Z [inf]  Packages: +500
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+2026-05-02T15:32:08.010357521Z [inf]  Progress: resolved 500, reused 0, downloaded 422, added 90
+
+2026-05-02T15:32:08.278432484Z [inf]  
+   ╭───────────────────────────────────────────────╮
+   │                                               │
+   │     Update available! 10.33.0 → 10.33.2.      │
+   │     Changelog: https://pnpm.io/v/10.33.2      │
+   │   To update, run: corepack use pnpm@10.33.2   │
+   │                                               │
+   ╰───────────────────────────────────────────────╯
+
+
+2026-05-02T15:32:09.011717832Z [inf]  Progress: resolved 500, reused 0, downloaded 498, added 497
+
+2026-05-02T15:32:10.012867548Z [inf]  Progress: resolved 500, reused 0, downloaded 499, added 499
+
+2026-05-02T15:32:10.594430755Z [inf]  Progress: resolved 500, reused 0, downloaded 500, added 500, done
+
+2026-05-02T15:32:10.898855116Z [inf]  
+devDependencies:
++ @biomejs/biome 2.4.13
++ turbo 2.3.3
++ typescript 5.7.3
+
+
+2026-05-02T15:32:10.942190021Z [inf]  ╭ Warning ─────────────────────────────────────────────────────────────────────╮
+│                                                                              │
+│   Ignored build scripts: esbuild@0.18.20, esbuild@0.19.12, esbuild@0.21.5,   │
+│   esbuild@0.23.1, msw@2.14.2, sharp@0.34.5.                                  │
+│   Run "pnpm approve-builds" to pick which dependencies should be allowed     │
+│   to run scripts.                                                            │
+│                                                                              │
+╰──────────────────────────────────────────────────────────────────────────────╯
+
+2026-05-02T15:32:11.18423553Z [inf]  Done in 4.6s using pnpm v10.33.0
+
+2026-05-02T15:32:12.371825740Z [inf]  [stage-0  8/12] RUN --mount=type=cache,id=s/84c65009-d3f5-41de-92ca-ea747e35de14-/root/local/share/pnpm/store/v3,target=/root/.local/share/pnpm/store/v3 pnpm install --frozen-lockfile
+2026-05-02T15:32:12.397640452Z [inf]  [stage-0  9/12] COPY . /app/.
+2026-05-02T15:32:13.823238026Z [inf]  [stage-0  9/12] COPY . /app/.
+2026-05-02T15:32:13.853862459Z [inf]  [stage-0 10/12] RUN --mount=type=cache,id=s/84c65009-d3f5-41de-92ca-ea747e35de14-apps/web/next/cache,target=/app/apps/web/.next/cache --mount=type=cache,id=s/84c65009-d3f5-41de-92ca-ea747e35de14-node_modules/cache,target=/app/node_modules/.cache pnpm --filter @runspend/web build
+2026-05-02T15:32:14.697380862Z [inf]  
+> @runspend/web@0.0.0 build /app/apps/web
+> next build
+
+
+2026-05-02T15:32:15.144625507Z [inf]  Attention: Next.js now collects completely anonymous telemetry regarding usage.
+
+2026-05-02T15:32:15.144791185Z [inf]  This information is used to shape Next.js' roadmap and prioritize features.
+You can learn more, including how to opt-out if you'd not like to participate in this anonymous program, by visiting the following URL:
+https://nextjs.org/telemetry
+
+2026-05-02T15:32:15.144889262Z [inf]  
+2026-05-02T15:32:15.162102255Z [inf]  ▲ Next.js 16.2.4 (Turbopack)
+
+2026-05-02T15:32:15.162202946Z [inf]  
+2026-05-02T15:32:15.164814422Z [inf]  ⚠ The "middleware" file convention is deprecated. Please use "proxy" instead. Learn more: https://nextjs.org/docs/messages/middleware-to-proxy
+
+2026-05-02T15:32:15.218591445Z [inf]    Creating an optimized production build ...
+
+2026-05-02T15:32:18.862622512Z [inf]  
+2026-05-02T15:32:18.862645176Z [inf]  > Build error occurred
+
+2026-05-02T15:32:18.872266173Z [inf]  Error: Turbopack build failed with 18 errors:
+./packages/github/src/index.ts:2:1
+Module not found: Can't resolve './app.js'
+  [90m1 |[0m [36mexport[0m [36mtype[0m { [33mGithubAppConfig[0m } [36mfrom[0m [32m"./app.js"[0m;
+[31m[1m>[0m [90m2 |[0m [36mexport[0m { getApp, getInstallationOctokit } [36mfrom[0m [32m"./app.js"[0m;
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m3 |[0m [36mexport[0m [36mtype[0m {
+  [90m4 |[0m   [33mGithubInstallation[0m,
+  [90m5 |[0m   [33mGithubInstallationAccount[0m,
+
+
+
+Import trace:
+  App Route:
+    ./packages/github/src/index.ts
+    ./apps/web/src/app/api/webhooks/github/route.ts
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+./packages/db/src/index.ts:2:1
+Module not found: Can't resolve './client.js'
+  [90m1 |[0m [36mexport[0m [36mtype[0m { [33mDatabase[0m } [36mfrom[0m [32m"./client.js"[0m;
+[31m[1m>[0m [90m2 |[0m [36mexport[0m { createDb, getDb } [36mfrom[0m [32m"./client.js"[0m;
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m3 |[0m [36mexport[0m * [36mfrom[0m [32m"./schema.js"[0m;
+  [90m4 |[0m
+
+
+
+Import traces:
+  App Route:
+    ./packages/db/src/index.ts
+    ./apps/web/src/app/api/github/install/callback/route.ts
+
+  Server Component:
+    ./packages/db/src/index.ts
+    ./apps/web/src/app/dashboard/page.tsx
+
+  Edge Middleware:
+    ./packages/db/src/index.ts
+    ./apps/web/src/auth.ts
+    ./apps/web/src/middleware.ts
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+./packages/shared/src/index.ts:2:1
+Module not found: Can't resolve './env.js'
+  [90m1 |[0m [36mexport[0m [36mtype[0m { [33mEnv[0m } [36mfrom[0m [32m"./env.js"[0m;
+[31m[1m>[0m [90m2 |[0m [36mexport[0m { getEnv } [36mfrom[0m [32m"./env.js"[0m;
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m3 |[0m [36mexport[0m { [33mAuthError[0m, [33mConfigError[0m, [33mNotFoundError[0m, [33mRunspendError[0m } [36mfrom[0m [32m"./errors.js"[0m;
+  [90m4 |[0m [36mexport[0m [36mtype[0m { [33mLogger[0m } [36mfrom[0m [32m"./logger.js"[0m;
+  [90m5 |[0m [36mexport[0m { logger } [36mfrom[0m [32m"./logger.js"[0m;
+
+
+
+Import trace:
+  App Route:
+    ./packages/shared/src/index.ts
+    ./apps/web/src/app/api/webhooks/github/route.ts
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+./packages/shared/src/index.ts:3:1
+Module not found: Can't resolve './errors.js'
+  [90m1 |[0m [36mexport[0m [36mtype[0m { [33mEnv[0m } [36mfrom[0m [32m"./env.js"[0m;
+  [90m2 |[0m [36mexport[0m { getEnv } [36mfrom[0m [32m"./env.js"[0m;
+[31m[1m>[0m [90m3 |[0m [36mexport[0m { [33mAuthError[0m, [33mConfigError[0m, [33mNotFoundError[0m, [33mRunspendError[0m } [36mfrom[0m [32m"./errors.js"[0m;
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m4 |[0m [36mexport[0m [36mtype[0m { [33mLogger[0m } [36mfrom[0m [32m"./logger.js"[0m;
+  [90m5 |[0m [36mexport[0m { logger } [36mfrom[0m [32m"./logger.js"[0m;
+  [90m6 |[0m
+
+
+
+Import trace:
+  App Route:
+    ./packages/shared/src/index.ts
+    ./apps/web/src/app/api/webhooks/github/route.ts
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+./packages/github/src/index.ts:8:1
+Module not found: Can't resolve './installation.js'
+  [90m 6 |[0m   [33mGithubRepositoryRef[0m,
+  [90m 7 |[0m } [36mfrom[0m [32m"./installation.js"[0m;
+[31m[1m>[0m [90m 8 |[0m [36mexport[0m {
+  [90m   |[0m [31m[1m^^^^^^^[0m
+[31m[1m>[0m [90m 9 |[0m   fetchInstallation,
+  [90m   |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^[0m
+[31m[1m>[0m [90m10 |[0m   listInstallationRepositories,
+  [90m   |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+[31m[1m>[0m [90m11 |[0m   readAccount,
+  [90m   |[0m [31m[1m^^^^^^^^^^^^^^[0m
+[31m[1m>[0m [90m12 |[0m   readRepo,
+  [90m   |[0m [31m[1m^^^^^^^^^^^[0m
+[31m[1m>[0m [90m13 |[0m   userCanSeeInstallation,
+  [90m   |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+[31m[1m>[0m [90m14 |[0m } [36mfrom[0m [32m"./installation.js"[0m;
+  [90m   |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m15 |[0m [36mexport[0m [36mtype[0m {
+  [90m16 |[0m   [33mLinkUserAsOwnerInput[0m,
+  [90m17 |[0m   [33mSyncRepositoriesInput[0m,
+
+
+
+Import trace:
+  App Route:
+    ./packages/github/src/index.ts
+    ./apps/web/src/app/api/webhooks/github/route.ts
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+./packages/shared/src/index.ts:5:1
+Module not found: Can't resolve './logger.js'
+  [90m3 |[0m [36mexport[0m { [33mAuthError[0m, [33mConfigError[0m, [33mNotFoundError[0m, [33mRunspendError[0m } [36mfrom[0m [32m"./errors.js"[0m;
+  [90m4 |[0m [36mexport[0m [36mtype[0m { [33mLogger[0m } [36mfrom[0m [32m"./logger.js"[0m;
+[31m[1m>[0m [90m5 |[0m [36mexport[0m { logger } [36mfrom[0m [32m"./logger.js"[0m;
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m6 |[0m
+
+
+
+Import trace:
+  App Route:
+    ./packages/shared/src/index.ts
+    ./apps/web/src/app/api/webhooks/github/route.ts
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+./packages/db/src/index.ts:3:1
+Module not found: Can't resolve './schema.js'
+  [90m1 |[0m [36mexport[0m [36mtype[0m { [33mDatabase[0m } [36mfrom[0m [32m"./client.js"[0m;
+  [90m2 |[0m [36mexport[0m { createDb, getDb } [36mfrom[0m [32m"./client.js"[0m;
+[31m[1m>[0m [90m3 |[0m [36mexport[0m * [36mfrom[0m [32m"./schema.js"[0m;
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m4 |[0m
+
+
+
+Import traces:
+  App Route:
+    ./packages/db/src/index.ts
+    ./apps/web/src/app/api/github/install/callback/route.ts
+
+  Server Component:
+    ./packages/db/src/index.ts
+    ./apps/web/src/app/dashboard/page.tsx
+
+  Edge Middleware:
+    ./packages/db/src/index.ts
+    ./apps/web/src/auth.ts
+    ./apps/web/src/middleware.ts
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+./packages/github/src/index.ts:20:1
+Module not found: Can't resolve './sync.js'
+  [90m18 |[0m   [33mUpsertOrgFromInstallationInput[0m,
+  [90m19 |[0m } [36mfrom[0m [32m"./sync.js"[0m;
+[31m[1m>[0m [90m20 |[0m [36mexport[0m {
+  [90m   |[0m [31m[1m^^^^^^^[0m
+[31m[1m>[0m [90m21 |[0m   linkUserAsOwner,
+  [90m   |[0m [31m[1m^^^^^^^^^^^^^^^^^^[0m
+[31m[1m>[0m [90m22 |[0m   syncRepositories,
+  [90m   |[0m [31m[1m^^^^^^^^^^^^^^^^^^^[0m
+[31m[1m>[0m [90m23 |[0m   upsertOrgFromInstallation,
+  [90m   |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+[31m[1m>[0m [90m24 |[0m } [36mfrom[0m [32m"./sync.js"[0m;
+  [90m   |[0m [31m[1m^^^^^^^^^^^^^^^^^^^[0m
+  [90m25 |[0m [36mexport[0m { verifyWebhookSignature } [36mfrom[0m [32m"./webhook.js"[0m;
+  [90m26 |[0m
+
+
+
+Import trace:
+  App Route:
+    ./packages/github/src/index.ts
+    ./apps/web/src/app/api/webhooks/github/route.ts
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+./packages/github/src/index.ts:25:1
+Module not found: Can't resolve './webhook.js'
+  [90m23 |[0m   upsertOrgFromInstallation,
+  [90m24 |[0m } [36mfrom[0m [32m"./sync.js"[0m;
+[31m[1m>[0m [90m25 |[0m [36mexport[0m { verifyWebhookSignature } [36mfrom[0m [32m"./webhook.js"[0m;
+  [90m   |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m26 |[0m
+
+
+
+Import trace:
+  App Route:
+    ./packages/github/src/index.ts
+    ./apps/web/src/app/api/webhooks/github/route.ts
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+./apps/web/src/lib/db/user-orgs.ts:1:1
+Export orgMemberships doesn't exist in target module
+[31m[1m>[0m [90m1 |[0m [36mimport[0m { [36mtype[0m [33mDatabase[0m, organizations, orgMemberships } [36mfrom[0m [32m"@runspend/db"[0m;
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m2 |[0m [36mimport[0m { eq } [36mfrom[0m [32m"drizzle-orm"[0m;
+  [90m3 |[0m
+  [90m4 |[0m [36mexport[0m [36masync[0m [36mfunction[0m getUserOrgs(db: [33mDatabase[0m, userId: string) {
+
+The export orgMemberships was not found in module [project]/packages/db/src/index.ts [app-rsc] (ecmascript).
+Did you mean to import getDb?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import trace:
+  Server Component:
+    ./apps/web/src/lib/db/user-orgs.ts
+    ./apps/web/src/app/onboarding/install/page.tsx
+
+
+./apps/web/src/lib/db/user-orgs.ts:1:1
+Export organizations doesn't exist in target module
+[31m[1m>[0m [90m1 |[0m [36mimport[0m { [36mtype[0m [33mDatabase[0m, organizations, orgMemberships } [36mfrom[0m [32m"@runspend/db"[0m;
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m2 |[0m [36mimport[0m { eq } [36mfrom[0m [32m"drizzle-orm"[0m;
+  [90m3 |[0m
+  [90m4 |[0m [36mexport[0m [36masync[0m [36mfunction[0m getUserOrgs(db: [33mDatabase[0m, userId: string) {
+
+The export organizations was not found in module [project]/packages/db/src/index.ts [app-rsc] (ecmascript).
+Did you mean to import createDb?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import trace:
+  Server Component:
+    ./apps/web/src/lib/db/user-orgs.ts
+    ./apps/web/src/app/onboarding/install/page.tsx
+
+
+./apps/web/src/lib/github/webhook-handlers.ts:1:1
+Export organizations doesn't exist in target module
+[31m[1m>[0m [90m1 |[0m [36mimport[0m { [36mtype[0m [33mDatabase[0m, organizations } [36mfrom[0m [32m"@runspend/db"[0m;
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m2 |[0m [36mimport[0m {
+  [90m3 |[0m   [36mtype[0m [33mGithubInstallation[0m,
+  [90m4 |[0m   [36mtype[0m [33mGithubRepositoryRef[0m,
+
+The export organizations was not found in module [project]/packages/db/src/index.ts [app-route] (ecmascript).
+Did you mean to import createDb?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import trace:
+  App Route:
+    ./apps/web/src/lib/github/webhook-handlers.ts
+    ./apps/web/src/app/api/webhooks/github/route.ts
+
+
+./apps/web/src/auth.ts:1:1
+Export users doesn't exist in target module
+[31m[1m>[0m [90m1 |[0m [36mimport[0m { getDb, users } [36mfrom[0m [32m"@runspend/db"[0m;
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m2 |[0m [36mimport[0m { eq } [36mfrom[0m [32m"drizzle-orm"[0m;
+  [90m3 |[0m [36mimport[0m [33mNextAuth[0m [36mfrom[0m [32m"next-auth"[0m;
+  [90m4 |[0m [36mimport[0m [33mGitHub[0m [36mfrom[0m [32m"next-auth/providers/github"[0m;
+
+The export users was not found in module [project]/packages/db/src/index.ts [app-route] (ecmascript).
+Did you mean to import getDb?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  App Route:
+    ./apps/web/src/auth.ts
+    ./apps/web/src/app/api/github/install/callback/route.ts
+
+  Edge Middleware:
+    ./apps/web/src/auth.ts
+    ./apps/web/src/middleware.ts
+
+  Server Component:
+    ./apps/web/src/auth.ts
+    ./apps/web/src/app/onboarding/install/page.tsx
+
+
+./apps/web/src/auth.ts:1:1
+Export users doesn't exist in target module
+[31m[1m>[0m [90m1 |[0m [36mimport[0m { getDb, users } [36mfrom[0m [32m"@runspend/db"[0m;
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m2 |[0m [36mimport[0m { eq } [36mfrom[0m [32m"drizzle-orm"[0m;
+  [90m3 |[0m [36mimport[0m [33mNextAuth[0m [36mfrom[0m [32m"next-auth"[0m;
+  [90m4 |[0m [36mimport[0m [33mGitHub[0m [36mfrom[0m [32m"next-auth/providers/github"[0m;
+
+The export users was not found in module [project]/packages/db/src/index.ts [app-rsc] (ecmascript).
+Did you mean to import getDb?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  App Route:
+    ./apps/web/src/auth.ts
+    ./apps/web/src/app/api/github/install/callback/route.ts
+
+  Edge Middleware:
+    ./apps/web/src/auth.ts
+    ./apps/web/src/middleware.ts
+
+  Server Component:
+    ./apps/web/src/auth.ts
+    ./apps/web/src/app/onboarding/install/page.tsx
+
+
+./apps/web/src/auth.ts:1:1
+Export users doesn't exist in target module
+[31m[1m>[0m [90m1 |[0m [36mimport[0m { getDb, users } [36mfrom[0m [32m"@runspend/db"[0m;
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m2 |[0m [36mimport[0m { eq } [36mfrom[0m [32m"drizzle-orm"[0m;
+  [90m3 |[0m [36mimport[0m [33mNextAuth[0m [36mfrom[0m [32m"next-auth"[0m;
+  [90m4 |[0m [36mimport[0m [33mGitHub[0m [36mfrom[0m [32m"next-auth/providers/github"[0m;
+
+The export users was not found in module [project]/packages/db/src/index.ts [middleware-edge] (ecmascript).
+Did you mean to import getDb?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  App Route:
+    ./apps/web/src/auth.ts
+    ./apps/web/src/app/api/github/install/callback/route.ts
+
+  Edge Middleware:
+    ./apps/web/src/auth.ts
+    ./apps/web/src/middleware.ts
+
+  Server Component:
+    ./apps/web/src/auth.ts
+    ./apps/web/src/app/onboarding/install/page.tsx
+
+
+./apps/web/src/lib/auth/upsert-user.ts:1:1
+Export users doesn't exist in target module
+[31m[1m>[0m [90m1 |[0m [36mimport[0m { [36mtype[0m [33mDatabase[0m, users } [36mfrom[0m [32m"@runspend/db"[0m;
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m2 |[0m [36mimport[0m { eq } [36mfrom[0m [32m"drizzle-orm"[0m;
+  [90m3 |[0m
+  [90m4 |[0m [36mexport[0m [36minterface[0m [33mGithubUserUpsertInput[0m {
+
+The export users was not found in module [project]/packages/db/src/index.ts [app-route] (ecmascript).
+Did you mean to import getDb?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  App Route:
+    ./apps/web/src/lib/auth/upsert-user.ts
+    ./apps/web/src/auth.ts
+    ./apps/web/src/app/api/github/install/callback/route.ts
+
+  Edge Middleware:
+    ./apps/web/src/lib/auth/upsert-user.ts
+    ./apps/web/src/auth.ts
+    ./apps/web/src/middleware.ts
+
+  Server Component:
+    ./apps/web/src/lib/auth/upsert-user.ts
+    ./apps/web/src/auth.ts
+    ./apps/web/src/app/onboarding/install/page.tsx
+
+
+./apps/web/src/lib/auth/upsert-user.ts:1:1
+Export users doesn't exist in target module
+[31m[1m>[0m [90m1 |[0m [36mimport[0m { [36mtype[0m [33mDatabase[0m, users } [36mfrom[0m [32m"@runspend/db"[0m;
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m2 |[0m [36mimport[0m { eq } [36mfrom[0m [32m"drizzle-orm"[0m;
+  [90m3 |[0m
+  [90m4 |[0m [36mexport[0m [36minterface[0m [33mGithubUserUpsertInput[0m {
+
+The export users was not found in module [project]/packages/db/src/index.ts [app-rsc] (ecmascript).
+Did you mean to import getDb?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  App Route:
+    ./apps/web/src/lib/auth/upsert-user.ts
+    ./apps/web/src/auth.ts
+    ./apps/web/src/app/api/github/install/callback/route.ts
+
+  Edge Middleware:
+    ./apps/web/src/lib/auth/upsert-user.ts
+    ./apps/web/src/auth.ts
+    ./apps/web/src/middleware.ts
+
+  Server Component:
+    ./apps/web/src/lib/auth/upsert-user.ts
+    ./apps/web/src/auth.ts
+    ./apps/web/src/app/onboarding/install/page.tsx
+
+
+./apps/web/src/lib/auth/upsert-user.ts:1:1
+Export users doesn't exist in target module
+[31m[1m>[0m [90m1 |[0m [36mimport[0m { [36mtype[0m [33mDatabase[0m, users } [36mfrom[0m [32m"@runspend/db"[0m;
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m2 |[0m [36mimport[0m { eq } [36mfrom[0m [32m"drizzle-orm"[0m;
+  [90m3 |[0m
+  [90m4 |[0m [36mexport[0m [36minterface[0m [33mGithubUserUpsertInput[0m {
+
+The export users was not found in module [project]/packages/db/src/index.ts [middleware-edge] (ecmascript).
+Did you mean to import getDb?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  App Route:
+    ./apps/web/src/lib/auth/upsert-user.ts
+    ./apps/web/src/auth.ts
+    ./apps/web/src/app/api/github/install/callback/route.ts
+
+  Edge Middleware:
+    ./apps/web/src/lib/auth/upsert-user.ts
+    ./apps/web/src/auth.ts
+    ./apps/web/src/middleware.ts
+
+  Server Component:
+    ./apps/web/src/lib/auth/upsert-user.ts
+    ./apps/web/src/auth.ts
+    ./apps/web/src/app/onboarding/install/page.tsx
+
+
+    at <unknown> (./packages/github/src/index.ts:2:1)
+    at <unknown> (https://nextjs.org/docs/messages/module-not-found)
+    at <unknown> (./packages/db/src/index.ts:2:1)
+    at <unknown> (https://nextjs.org/docs/messages/module-not-found)
+    at <unknown> (./packages/shared/src/index.ts:2:1)
+    at <unknown> (https://nextjs.org/docs/messages/module-not-found)
+    at <unknown> (./packages/shared/src/index.ts:3:1)
+    at <unknown> (https://nextjs.org/docs/messages/module-not-found)
+    at <unknown> (./packages/github/src/index.ts:8:1)
+    at <unknown> (https://nextjs.org/docs/messages/module-not-found)
+    at <unknown> (./packages/shared/src/index.ts:5:1)
+    at <unknown> (https://nextjs.org/docs/messages/module-not-found)
+    at <unknown> (./packages/db/src/index.ts:3:1)
+    at <unknown> (https://nextjs.org/docs/messages/module-not-found)
+    at <unknown> (./packages/github/src/index.ts:20:1)
+    at <unknown> (https://nextjs.org/docs/messages/module-not-found)
+    at <unknown> (./packages/github/src/index.ts:25:1)
+    at <unknown> (https://nextjs.org/docs/messages/module-not-found)
+    at <unknown> (./apps/web/src/lib/db/user-orgs.ts:1:1)
+    at <unknown> (./apps/web/src/lib/db/user-orgs.ts:1:1)
+    at <unknown> (./apps/web/src/lib/github/webhook-handlers.ts:1:1)
+    at <unknown> (./apps/web/src/auth.ts:1:1)
+    at <unknown> (./apps/web/src/auth.ts:1:1)
+    at <unknown> (./apps/web/src/auth.ts:1:1)
+    at <unknown> (./apps/web/src/lib/auth/upsert-user.ts:1:1)
+    at <unknown> (./apps/web/src/lib/auth/upsert-user.ts:1:1)
+    at <unknown> (./apps/web/src/lib/auth/upsert-user.ts:1:1)
+
+2026-05-02T15:32:19.081552998Z [inf]  /app/apps/web:
+ ERR_PNPM_RECURSIVE_RUN_FIRST_FAIL  @runspend/web@0.0.0 build: `next build`
+Exit status 1
+
+2026-05-02T15:32:19.892001880Z [err]  [stage-0 10/12] RUN --mount=type=cache,id=s/84c65009-d3f5-41de-92ca-ea747e35de14-apps/web/next/cache,target=/app/apps/web/.next/cache --mount=type=cache,id=s/84c65009-d3f5-41de-92ca-ea747e35de14-node_modules/cache,target=/app/node_modules/.cache pnpm --filter @runspend/web build
+2026-05-02T15:32:20.028232581Z [err]  Build Failed: build daemon returned an error < failed to solve: process "/bin/bash -ol pipefail -c pnpm --filter @runspend/web build" did not complete successfully: exit code: 1 >
